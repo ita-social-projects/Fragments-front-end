@@ -14,7 +14,7 @@ const Header = () => {
         <span className={styles.headerLabel}>Label</span>
         <span className={styles.headerLabel}>Label</span>
         <span className={styles.headerLabel}>Label</span>    
-      </div>
+      </div> 
       <div className='col-3'> 
         <span className={styles.searchIcon}>
           <img src = "search.svg" alt="search"/>
