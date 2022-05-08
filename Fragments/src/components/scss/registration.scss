@@ -1,0 +1,80 @@
+.reg-form{
+    box-sizing: border-box;
+    margin: 150px 30%;
+    padding: 55px;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.3px;
+    border: 2px solid;
+    border-image: linear-gradient(180deg, #4F33FD 33.06%, #FCA119 100%) 1;
+    .reg-btn{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 14px 20px;
+        width: 171px;
+        height: 52px;
+        color: white;
+        box-sizing: border-box;
+        margin: 54px 60px 0;
+        background: #000000;
+        border-radius: 999px;
+
+    }
+}
+
+.reg-info{
+    display: inline-block;
+    margin: 30px 60px;
+    width: 325px;
+    height: 20px;
+    background: #000000;
+    color: white;
+}
+.img-insert{
+    display: inline-block;
+    position:fixed;
+    width: 100px;
+    height: 140px;
+    opacity: 1;
+}
+.insert-photo{
+    display: inline-block;
+    width: 100px;
+    height: 140px;
+    opacity: 0;
+    cursor: pointer;
+}
+.input-photo{
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 15px 60px;
+    width: 100px;
+    height: 140px;
+    border: 2px dashed rgba($color: #000000, $alpha: .5);
+    -webkit-background-clip: padding-box; /* for Safari */
+    background-clip: padding-box;
+}
+.input-fields{
+    display: inline-block;
+    box-sizing: border-box;
+    margin: 15px 60px;
+    width: 325px;
+    height: 40px;
+
+    border: 2px solid #000000;
+}
+
+.react-datepicker {
+    font-family: 'Mulish' !important;
+    font-style: normal !important;
+    font-weight: 600 !important;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 0.3px;
+    border: 2px solid #000000
+    !important} 
