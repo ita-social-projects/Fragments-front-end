@@ -1,7 +1,8 @@
-import React, {useState ,useEffect} from 'react'
+import React, {useState, useEffect} from 'react'
 import '../scss/registration.scss'
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css"
+import validator from 'validator'
+import BirthdayPicker from './BirthdayPicker';
+import Success from '../notification/Success';
 
 
 const defaultImageSrc = '/logo192.png'
@@ -11,15 +12,13 @@ const initialFieldValues = {
     email: '',
     firstName: '',
     lastName: '',
-    bDay: Date.now(),
+    date:'',
     imageSrc: defaultImageSrc,
     imageFile: null
 }
-
-const Registration = (props) => {
-  const [startDate, setStartDate] = useState(new Date());
+const RegistrationForm = (props) => {  
+  const [date, setDate] = useState();
   const { addOrEdit, recordForEdit } = props
-
   const [values, setValues] = useState(initialFieldValues)
   const [errors, setErrors] = useState({})
 
@@ -30,10 +29,15 @@ const Registration = (props) => {
 
   const handleInputChange = e => {
       const { name, value } = e.target;
+      if(name === 'email')
+        validateEmail(e);
       setValues({
           ...values,
           [name]: value
       })
+  }
+  const ClearInput = e => {
+      e = ''
   }
 
   const showPreview = e => {
@@ -61,10 +65,23 @@ const Registration = (props) => {
         document.getElementById('image-uploader').style = imgEl.style;
     }
   }
+  const [emailError, setEmailError] = useState('')
+  const validateEmail = (e) => {
+    let emailElem = document.getElementById('email-input');
+    var email = e.target.value
+    if (validator.isEmail(email) || email.length === 0) {
+      setEmailError('')
+      emailElem.classList.remove('invalid-field')
+    } else {
+      setEmailError('невірна поштова адреса')
+      emailElem.classList.add('invalid-field')
+
+    }
+  }
   const validate = () => {
     let temp = {}
-    temp.email = values.email === "" ? false : true;
-    temp.imageSrc = values.imageSrc === defaultImageSrc ? false : true;
+    temp.email = values.email !== "";
+    temp.imageSrc = values.imageSrc !== defaultImageSrc;
     setErrors(temp)
     return Object.values(temp).every(x => x === true)
   }
@@ -77,42 +94,74 @@ const Registration = (props) => {
   }
   const handleFormSubmit = e => {
     e.preventDefault()
-    if (validate()) {
+    if (validate()) {  
         const formData = new FormData()
         formData.append('userID', values.userID)
         formData.append('email', values.email)
         formData.append('firstName', values.firstName)
         formData.append('lastName', values.lastName)
-        formData.append('bDay', values.bDay)
+        formData.append('date', date.toLocaleDateString().replaceAll('.','-'))
         formData.append('imageFile', values.imageFile)
         addOrEdit(formData, resetForm)
     }
   }
   return (
+    <>
+    <Success/>
     <div className='container-fluid'>
+      
       <div className='row'>
         <div className='reg-form col align-self-center'>
-          <span className='reg-info'> Введіть ваші дані, будь ласка</span>
+          <span className='reg-info'> Особисті дані</span>
           <form autoComplete="off" noValidate onSubmit={handleFormSubmit}>
-            
-            <img src={values.imageSrc} className="img-fluid input-photo" id="image-uploader"/>
+          <img src={values.imageSrc} className="img-fluid input-photo" id="image-uploader" alt='upload'/>
             <input className={'input-file' + applyErrorClass('imageSrc')} type="file" name='photo' accept="image/*" 
-            onChange={showPreview} required  />
-                       
-            <input className='input-fields' type="email" name="email" value={values.email} 
-            onChange={handleInputChange}  placeholder="Е-мейл" required />
+            onChange={showPreview} required/> 
+            <div className='input-text'>
+              Ім'я
+              <span class="required">*</span>
+            </div>  
             <input className='input-fields' type="text" name="firstName"  
             value={values.firstName} onChange={handleInputChange} placeholder="Ім'я" required />
+            <button type="reset" onClick={ClearInput}>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M14 1.40634L1.40634 14L0 12.5937L12.5937 0L14 1.40634Z" fill="black"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.40634 0L14 12.5937L12.5937 14L0 1.40634L1.40634 0Z" fill="black"/>
+            </svg>
+            </button>
+            <div className='input-text'>
+              Прізвище
+            <span className="required">*</span>
+            </div>  
             <input className='input-fields' type="text" name="lastName"  
             value={values.lastName} onChange={handleInputChange} placeholder="Прізвище" required />
-            <DatePicker className='input-fields' selected={startDate} name="bDay" 
-            value={values.bDay}  onChange={(date) => setStartDate(date)}  dateFormat="dd/MM/yyyy"  required />
-            <button className='reg-btn' type="submit" value="Sign Up">Зберегти</button>
+            <button className='lastname-btn' type='search' onClick={ClearInput(values.lastName)}>
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M14 1.40634L1.40634 14L0 12.5937L12.5937 0L14 1.40634Z" fill="black"/>
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.40634 0L14 12.5937L12.5937 14L0 1.40634L1.40634 0Z" fill="black"/>
+            </svg>
+            </button>
+            <div className='input-text'>
+              
+              Дата народження
+              <span className="required">*</span>
+            </div>
+            <BirthdayPicker value= {date} setValue ={setDate} classes={'select-input'}/>     
+            <div className='input-text'>
+              Поштова адреса
+              <span className="required">*</span>
+            </div>       
+            <input type="email" pattern=".+@globex\.com" className='input-fields' id='email-input'  name="email" value={values.email} 
+            onChange={handleInputChange}  placeholder="example@domain.com" required />
+            <span className='email-valid'>{emailError}</span>  
+            <button className='back-btn' type="submit" value="back">Назад</button>
+            <button className='reg-btn' type="submit" value="save" disabled={!values.email || !values.firstName || !values.lastName || !date ||!values.imageFile}>Зберегти</button>
           </form>
         </div>
       </div>
     </div>
+    </>
   )
 }
 
-export default Registration;
+export default RegistrationForm;

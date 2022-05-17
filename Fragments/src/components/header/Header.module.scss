@@ -61,7 +61,7 @@
 }
   
 .logBtn{
-    position: relative;
+    display: inline-block;
     padding: 8px 10px;
     border: 2px solid #000000;
     border-radius: 999px;
@@ -79,7 +79,7 @@
     margin: 0 0;
 }
 .signBtn{
-    position: relative;
+    display: inline-block;
     padding: 8px 10px;
     border: 2px solid #000000;
     color: white;

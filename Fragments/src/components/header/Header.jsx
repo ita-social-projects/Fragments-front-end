@@ -10,7 +10,6 @@ const Header = () => {
           <img src = "logo.svg" alt="fragments logo"/>
           <span className={styles.fragmentsText}>ФРАГМЕНТИ</span> 
         </span>
-        
         <span className={styles.headerLabel}>Label</span>
         <span className={styles.headerLabel}>Label</span>
         <span className={styles.headerLabel}>Label</span>    
