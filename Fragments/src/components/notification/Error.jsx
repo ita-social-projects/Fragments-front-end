@@ -1,19 +1,19 @@
 import React, { useState } from 'react'
-import './notification.scss'
-const Success = () => {
+import './notification.scss';
+
+const Error = () => {
   const [hidden, setHidden] = useState(false);
   const applyErrorClass = () => hidden ? "hidden" : '';
-  return(
+  return (
     <div className={'notification col align-self-end ' + applyErrorClass()}>
-            <div className='success'>
-                <img src="success.svg" alt="success" className='success-img'/>
+            <div className='error'>
+                <img src="error.svg" alt="success" className='success-img'/>
                 <div className='notification-info'>
-                <div className='notification-header'>Positive notification</div>
-                <div className='notification-text'>Дані збережено</div>
+                <div className='notification-header'>Сталась помилка</div>
+                <div className='notification-text'>Не вдалося зберегти дані.</div>
                 </div>
                 <button className='close-btn' type='search' onClick={() => {
-          setHidden(!hidden);
-        }}>
+          setHidden(!hidden);}}>
                 <img src="button.svg" alt="x" />
                 </button>
             </div>
@@ -21,4 +21,4 @@ const Success = () => {
   )
 }
 
-export default Success;
+export default Error;

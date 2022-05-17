@@ -27,7 +27,7 @@
     flex: none;
     order: 0;
     align-self: stretch;
-    flex-grow: 0;
+    flex-grow: 1;
 }
 .input-fields{
     display: inline-block;
@@ -44,7 +44,8 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;
-    margin: 8px auto 50px auto;
+    margin: 8px -25px 50px 0px;
+    
     
 }
 input[name="email"]{
@@ -188,11 +189,8 @@ select{
     cursor: pointer;
 }
 .lastname-btn{
+    flex-direction: row;
     background: none;
-    left: 0%;
-    right: 0%;
-    top: 0%;
-    bottom: 0%;
     cursor: pointer;
     color: black;
     border: none;

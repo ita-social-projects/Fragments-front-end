@@ -3,7 +3,7 @@ import '../scss/registration.scss'
 import validator from 'validator'
 import BirthdayPicker from './BirthdayPicker';
 import Success from '../notification/Success';
-
+import Error from '../notification/Error';
 
 const defaultImageSrc = '/logo192.png'
 
@@ -36,10 +36,12 @@ const RegistrationForm = (props) => {
           [name]: value
       })
   }
-  const ClearInput = e => {
-      e = ''
-  }
-
+  const handleInputClear = (name) => {
+    setValues({
+        ...values,
+        [name]: ''
+    })
+}
   const showPreview = e => {
     const imgEl = document.getElementById('image-uploader');
     if (e.target.files && e.target.files[0]) {
@@ -85,7 +87,7 @@ const RegistrationForm = (props) => {
     setErrors(temp)
     return Object.values(temp).every(x => x === true)
   }
-  const applyErrorClass = field => ((field in errors && errors[field] === false) ? ' invalid-field' : '')
+  const applyErrorClass = field => (!values[field] ? 'hidden' : '')
 
   const resetForm = () => {
     setValues(initialFieldValues)
@@ -108,6 +110,7 @@ const RegistrationForm = (props) => {
   return (
     <>
     <Success/>
+    <Error/>
     <div className='container-fluid'>
       
       <div className='row'>
@@ -123,24 +126,21 @@ const RegistrationForm = (props) => {
             </div>  
             <input className='input-fields' type="text" name="firstName"  
             value={values.firstName} onChange={handleInputChange} placeholder="Ім'я" required />
-            <button type="reset" onClick={ClearInput}>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M14 1.40634L1.40634 14L0 12.5937L12.5937 0L14 1.40634Z" fill="black"/>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.40634 0L14 12.5937L12.5937 14L0 1.40634L1.40634 0Z" fill="black"/>
-            </svg>
+            <button className={'lastname-btn ' + applyErrorClass('firstName')} onClick={name => {name = 'firstName'; handleInputClear(name)}} >
+            <img src="button.svg" alt="x" />
             </button>
             <div className='input-text'>
               Прізвище
             <span className="required">*</span>
-            </div>  
-            <input className='input-fields' type="text" name="lastName"  
+            </div>
+            <div id='lastname'>
+              <input className='input-fields' type="text" name="lastName"  
             value={values.lastName} onChange={handleInputChange} placeholder="Прізвище" required />
-            <button className='lastname-btn' type='search' onClick={ClearInput(values.lastName)}>
-            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M14 1.40634L1.40634 14L0 12.5937L12.5937 0L14 1.40634Z" fill="black"/>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M1.40634 0L14 12.5937L12.5937 14L0 1.40634L1.40634 0Z" fill="black"/>
-            </svg>
+            <button className={'lastname-btn ' + applyErrorClass('lastName')} onClick={name => {name = 'lastName'; handleInputClear(name)}}>
+            <img src="button.svg" alt="x" />
             </button>
+            </div>
+            
             <div className='input-text'>
               
               Дата народження
