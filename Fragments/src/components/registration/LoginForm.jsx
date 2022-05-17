@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useNavigate} from 'react'
 import Facebook from './Facebook'
 import './modules/registration.scss'
 
