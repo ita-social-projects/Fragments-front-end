@@ -1,6 +1,6 @@
 import React, {useNavigate} from 'react'
 import Facebook from './Facebook'
-import './modules/registration.scss'
+import './scss/login.scss'
 
 const LoginForm = () => {
     const navigate = useNavigate();
