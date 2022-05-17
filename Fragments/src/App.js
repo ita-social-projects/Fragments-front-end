@@ -1,12 +1,12 @@
 import React from 'react';
-import Header from './components/header/Header';
-import Registration from './components/registration/RegistrationForm';
+import LoginForm from './Components/LoginForm';
+import Header from './Components/Header';
 
 function App() {
   return (
     <>
     <Header/>
-    <Registration/>
+    <LoginForm/>
     </>   
   );
 }
