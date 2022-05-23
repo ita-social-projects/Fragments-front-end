@@ -1,9 +1,15 @@
 import React from 'react'
-import Facebook from './Facebook'
-import './modules/registration.scss'
+import FacebookLogin from 'react-facebook-login'
+import './scss/registration.scss'
+import {GoogleLogin} from 'react-google-login'
+import {useNavigate} from 'react-router-dom'
 
+
+const clientId = "366436901363-b93c7i7nj1rmvnle6m992dgecfsf4bcd.apps.googleusercontent.com";
 const LoginForm = () => {
+    
     const navigate = useNavigate();
+
 
     const state = {
         isLoggedIn:false,
@@ -23,6 +29,32 @@ const LoginForm = () => {
         state.picture = response.picture.data.url;
         navigate('/Details',{state:state})
     }
+    const responseSuccessGoogle = (response) =>{
+        console.log("Login is success",response.profileObj);
+        state.userId = response.profileObj.googleId;
+        state.isLoggedIn = true;
+        state.email = response.profileObj.email;
+        state.firstname = response.profileObj.givenName;
+        state.lastname =response.profileObj.familyName ;
+        state.picture = response.profileObj.imageUrl;
+        //console.log(response);
+        navigate('/Details',{state:state})
+    }
+    const responseFailureGoogle = (response) =>{
+        console.log("Login is failed");
+        state.userId =0;
+        state.isLoggedIn = true;
+        state.email = "";
+        state.firstname = "";
+        state.lastname ="" ;
+        state.picture = "";
+        navigate('/Details',{state:state})
+    }
+
+
+
+
+
   return (
     <div className="container registration-container">
       <div className="row">
@@ -45,7 +77,16 @@ const LoginForm = () => {
                       </div>
                       <label className="control-label"></label>
                       <div className="controls">
-                          <button className='logbutton btn btn-outline-dark'>Продовжити через Google</button>
+                          <GoogleLogin  className ='logbutton btn btn-outline-dark'            
+                            clientId={clientId}
+                            render={renderProps => (
+                                <button onClick={renderProps.onClick} className ='logbutton btn btn-outline-dark'>Продовжити через Google</button>
+                              )}
+                            onSuccess={responseSuccessGoogle}
+                            onFailure = {responseFailureGoogle}
+                            cookiePolicy = {'single_host_origin'}
+                        />
+
                       </div>
                       <label className="control-label"></label>
                       <div className="controls">
