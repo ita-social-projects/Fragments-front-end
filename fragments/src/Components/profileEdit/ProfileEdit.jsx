@@ -1,13 +1,12 @@
 import React, {useState} from 'react'
 import '../scss/registration.scss'
-//import addUser from './Requests.js'
-import BirthdayPicker from './BirthdayPicker';
+import validator from 'validator'
 import {useLocation} from 'react-router-dom'
 
 const defaultImageSrc = '/logo192.png'
-//   <span className='email-valid'>{emailError}</span//>  
 
-const ProfileEdit = () =>{  
+
+const RegistrationForm = () =>{  
   const info = useLocation().state
 
   const initialFieldValues = {
@@ -27,7 +26,7 @@ const ProfileEdit = () =>{
   const handleInputChange = e => {
       const { name, value } = e.target;
       if(name === 'email')
-       // validateEmail(e);
+        validateEmail(e);
       setValues({
           ...values,
           [name]: value
@@ -64,9 +63,19 @@ const ProfileEdit = () =>{
         document.getElementById('image-uploader').style = imgEl.style;
     }
   }
-  
-  
-  
+  const [emailError, setEmailError] = useState('')
+  const validateEmail = (e) => {
+    let emailElem = document.getElementById('email-input');
+    var email = e.target.value
+    if (validator.isEmail(email) || email.length === 0) {
+      setEmailError('')
+      emailElem.classList.remove('invalid-field')
+    } else {
+      setEmailError('невірна поштова адреса')
+      emailElem.classList.add('invalid-field')
+
+    }
+  }
   const validate = () => {
     let temp = {}
     temp.email = values.email !== "";
@@ -126,13 +135,13 @@ const ProfileEdit = () =>{
               Дата народження
               <span className="required">*</span>
             </div>
-            <BirthdayPicker value= {date} setValue ={setDate} classes={'select-input'}/>     
             <div className='input-text'>
               Поштова адреса
               <span className="required">*</span>
             </div>       
             <input type="email" pattern=".+@globex\.com" className='input-fields' id='email-input'  name="email" value={values.email} 
             onChange={handleInputChange}  placeholder="example@domain.com" required />
+            <span className='email-valid'>{emailError}</span>  
             <button className='back-btn' type="submit" value="back">Назад</button>
             <button className='reg-btn' type="submit" value="save" disabled={!values.email || !values.firstName || !values.lastName || !date ||!values.imageFile}>Зберегти</button>
           </form>
@@ -143,4 +152,4 @@ const ProfileEdit = () =>{
   )
 }
 
-export default ProfileEdit;
+export default RegistrationForm;

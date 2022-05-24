@@ -42,13 +42,6 @@ const LoginForm = () => {
     }
     const responseFailureGoogle = (response) =>{
         console.log("Login is failed");
-        state.userId =0;
-        state.isLoggedIn = true;
-        state.email = "";
-        state.firstname = "";
-        state.lastname ="" ;
-        state.picture = "";
-        navigate('/Details',{state:state})
     }
 
 

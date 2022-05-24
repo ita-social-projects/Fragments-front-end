@@ -2,6 +2,7 @@ import React from 'react';
 import Header from './Components/header/Header';
 import Registration from './Components/registration/RegistrationForm';
 import SignUp from './Components/LoginForm';
+import ProfileEdit from './Components/profileEdit/ProfileEdit'
 import {BrowserRouter as Router,Routes,Route} from 'react-router-dom';
 import {gapi} from 'gapi-script';
 import {useEffect} from 'react'
@@ -23,6 +24,7 @@ function App() {
       <Routes>
           <Route path="/" element = {<SignUp/>} exact/>
           <Route path="/Details" element = {<Registration/>} exact/>
+          <Route path="/ProfileEdit" element = {<ProfileEdit/>} exact/>
       </Routes>
     </Router>
   );
