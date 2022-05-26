@@ -112,8 +112,10 @@ const Channeldetails = ({ ...props }) => {
         </div>
         <div>
           <button
+            type="button"
             className={stylescenter.addButton}
-            onClick={() => handleAddDetails()}
+            onClick={() => handleAddDetails()
+            }
           >
             <img src="plus.svg" alt="plus logo" />
             <span className={stylescenter.addButtonText}>
