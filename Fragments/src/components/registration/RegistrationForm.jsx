@@ -13,7 +13,7 @@ const RegistrationForm = () => {
 
   const initialFieldValues = {
     userID: 0,
-    email: "wqiepqiow@gmail.com",
+    email: "",
     name: "",
     date: "",
     imageSrc: defaultImageSrc,
