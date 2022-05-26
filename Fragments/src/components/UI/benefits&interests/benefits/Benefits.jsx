@@ -42,4 +42,4 @@ const Benefits = ({ ...props }) => {
   );
 };
 
-export default React.memo(Benefits);
+export default Benefits;

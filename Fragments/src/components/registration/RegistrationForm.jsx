@@ -13,7 +13,7 @@ const RegistrationForm = () => {
 
   const initialFieldValues = {
     userID: 0,
-    email: "wqiepqiow@gmail.com",
+    email: "",
     name: "",
     date: "",
     imageSrc: defaultImageSrc,
@@ -60,19 +60,19 @@ const RegistrationForm = () => {
 
   const handleChangeTextBenefits = useCallback((event) => {
     setTextareaBenefits(event.target.value);
-  }, []);
+  },[]);
 
-  const handleChangeTextInterest = (event) => {
+  const handleChangeTextInterest = useCallback((event) => {
     setTextareaInterest(event.target.value);
-  };
+  },[]);
 
   const handleChangeCheckboxOne = useCallback(() => {
     setCheckedOne(!checkedBoxOne);
   }, [checkedBoxOne]);
 
-  const handleChangeCheckboxTwo = () => {
+  const handleChangeCheckboxTwo = useCallback(() => {
     setCheckedTwo(!checkedBoxTwo);
-  };
+  },[checkedBoxTwo]);
 
   return (
     <div className={stylescenter.center_body}>

@@ -41,4 +41,4 @@ const Interests = ({ ...props }) => {
   );
 };
 
-export default React.memo(Interests);
+export default Interests;

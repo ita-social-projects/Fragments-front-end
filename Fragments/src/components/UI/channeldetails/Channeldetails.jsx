@@ -126,4 +126,4 @@ const Channeldetails = ({ ...props }) => {
   );
 };
 
-export default React.memo(Channeldetails);
+export default Channeldetails;

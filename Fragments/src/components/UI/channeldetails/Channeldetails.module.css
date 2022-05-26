@@ -1,6 +1,3 @@
-.channelOfConntection{
-    margin-top: 40px;
-}
 
 .detailsChannelInput{
     /* max-width: 502px; */
@@ -19,6 +16,7 @@
     border: 0px solid white;
 }
 .channelOfConntection{
+    margin-top: 40px;
     display: inline-block;
     box-sizing: border-box;
     width: 505px;
