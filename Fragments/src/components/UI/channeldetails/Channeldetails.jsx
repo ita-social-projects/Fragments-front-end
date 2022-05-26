@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { IconButton } from '@mui/material';
 import stylescenter from './Channeldetails.module.css'
 
-
-const Channeldetails = () =>{
+const Channeldetails = ({...props}) =>{
   
     const options =[
         {value :'none',label :''},
@@ -12,18 +11,11 @@ const Channeldetails = () =>{
         {value :'messenger',label:'Messenger'},
         {value :'sms',label:"SMS"}
       ]
-    
-    const [inputFieldsAndOptions, setInputFieldsAndOptions] = useState([{optionSelected:'',details:''}])
 
-    // Кнопка ↑
-    const handleChangeDetailsAndOptions = (index, event) => 
-    {
-      console.log();
-        const values = [...inputFieldsAndOptions];
-        values[index][event.target.name] = event.target.value;
-        setInputFieldsAndOptions(values);
-    }
-  
+    const handleChangeDetailsAndOptions = props.handleChangeDetailsAndOptions;
+    const setInputFieldsAndOptions = props.setInputFieldsAndOptions;
+    const inputFieldsAndOptions = props.inputFieldsAndOptions;
+    
     const handleAddDetails =()=>
     {
       setInputFieldsAndOptions([...inputFieldsAndOptions,{optionSelected:'',details:''}])
@@ -44,8 +36,7 @@ const Channeldetails = () =>{
     return (
       <div>
         <div className='button_addConnection'> 
-
-      <form className={stylescenter.detailsChannelAndInput}>
+      <div className={stylescenter.detailsChannelAndInput}>
         {inputFieldsAndOptions.map((element,index) => (
           <div key ={index}>
             <div>
@@ -89,7 +80,7 @@ const Channeldetails = () =>{
             </div>
           </div> 
         ))}
-      </form>
+      </div>
         <div>
           <button className={stylescenter.addButton} onClick={()=>handleAddDetails()}>
             <img src = "plus.svg" alt="plus logo"/>
@@ -101,4 +92,4 @@ const Channeldetails = () =>{
     )
 }
 
-export default Channeldetails;
+export default React.memo(Channeldetails);

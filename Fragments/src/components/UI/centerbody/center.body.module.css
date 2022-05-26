@@ -34,6 +34,18 @@
     font-family: 'Mulish';
     font-weight: 500;
 }
+.regInfo{
+    display: inline-block;
+    width: 505px;
+    height: 36px;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 36px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 1;
+}
 
 .button_submit button:hover {
     border: 2px solid black;
