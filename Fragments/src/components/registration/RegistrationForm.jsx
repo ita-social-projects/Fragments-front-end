@@ -14,8 +14,8 @@ const RegistrationForm = () =>{
   const initialFieldValues = {
     id: 0,
     email: info.email,
-    firstName: info.firstname,
-    lastName: info.lastname,
+    firstName: info.fullname,
+    lastName: "",
     birthday: Date.now(),
     imageSrc: info.picture,
     imageFile: null
