@@ -1,31 +1,26 @@
-import React, {useState, useEffect} from 'react'
-import '../scss/registration.scss'
+import React, {useState} from 'react'
+import styles from './registration.module.scss'
 import validator from 'validator'
 import BirthdayPicker from './BirthdayPicker';
-import Success from '../notification/Success';
-import Error from '../notification/Error';
 
-const defaultImageSrc = '/logo192.png'
 
-const initialFieldValues = {
-    userID: 0,
-    email: '',
-    firstName: '',
-    lastName: '',
-    date:'',
-    imageSrc: defaultImageSrc,
-    imageFile: null
-}
-const RegistrationForm = (props) => {  
+const RegistrationForm = () => {  
+  const defaultImageSrc = '/logo192.png'
+
+  const initialFieldValues = {
+      userID: 0,
+      email: '',
+      firstName: '',
+      lastName: '',
+      date:'',
+      imageSrc: defaultImageSrc,
+      imageFile: null
+  }
   const [date, setDate] = useState();
-  const { addOrEdit, recordForEdit } = props
   const [values, setValues] = useState(initialFieldValues)
-  const [errors, setErrors] = useState({})
+  const [emailError, setEmailError] = useState('')
 
-  useEffect(() => {
-    if (recordForEdit != null)
-        setValues(recordForEdit);
-  }, [recordForEdit])
+  const applyErrorClass = field => (!values[field] ? styles.hidden : '')
 
   const handleInputChange = e => {
       const { name, value } = e.target;
@@ -67,99 +62,69 @@ const RegistrationForm = (props) => {
         document.getElementById('image-uploader').style = imgEl.style;
     }
   }
-  const [emailError, setEmailError] = useState('')
   const validateEmail = (e) => {
-    let emailElem = document.getElementById('email-input');
-    var email = e.target.value
+    const emailElem = document.getElementById('email-input');
+    const email = e.target.value
     if (validator.isEmail(email) || email.length === 0) {
       setEmailError('')
-      emailElem.classList.remove('invalid-field')
+      emailElem.classList.remove(styles.invalidField);
     } else {
       setEmailError('невірна поштова адреса')
-      emailElem.classList.add('invalid-field')
+      emailElem.classList.add(styles.invalidField)
 
     }
   }
-  const validate = () => {
-    let temp = {}
-    temp.email = values.email !== "";
-    temp.imageSrc = values.imageSrc !== defaultImageSrc;
-    setErrors(temp)
-    return Object.values(temp).every(x => x === true)
-  }
-  const applyErrorClass = field => (!values[field] ? 'hidden' : '')
-
-  const resetForm = () => {
-    setValues(initialFieldValues)
-    document.getElementById('image-uploader').value = null;
-    setErrors({})
-  }
+  
   const handleFormSubmit = e => {
     e.preventDefault()
-    if (validate()) {  
-        const formData = new FormData()
-        formData.append('userID', values.userID)
-        formData.append('email', values.email)
-        formData.append('firstName', values.firstName)
-        formData.append('lastName', values.lastName)
-        formData.append('date', date.toLocaleDateString().replaceAll('.','-'))
-        formData.append('imageFile', values.imageFile)
-        addOrEdit(formData, resetForm)
-    }
+    const formData = new FormData()
+    formData.append('userID', values.userID)
+    formData.append('email', values.email)
+    formData.append('firstName', values.firstName)
+    formData.append('lastName', values.lastName)
+    formData.append('date', date.toJSON())
+    formData.append('imageFile', values.imageFile)
   }
   return (
     <>
-    <Success/>
-    <Error/>
-    <div className='container-fluid'>
-      
-      <div className='row'>
-        <div className='reg-form col align-self-center'>
-          <span className='reg-info'> Особисті дані</span>
-          <form autoComplete="off" noValidate onSubmit={handleFormSubmit}>
-          <img src={values.imageSrc} className="img-fluid input-photo" id="image-uploader" alt='upload'/>
-            <input className={'input-file' + applyErrorClass('imageSrc')} type="file" name='photo' accept="image/*" 
-            onChange={showPreview} required/> 
-            <div className='input-text'>
-              Ім'я
-              <span class="required">*</span>
-            </div>  
-            <input className='input-fields' type="text" name="firstName"  
-            value={values.firstName} onChange={handleInputChange} placeholder="Ім'я" required />
-            <button className={'lastname-btn ' + applyErrorClass('firstName')} onClick={name => {name = 'firstName'; handleInputClear(name)}} >
-            <img src="button.svg" alt="x" />
-            </button>
-            <div className='input-text'>
-              Прізвище
-            <span className="required">*</span>
-            </div>
-            <div id='lastname'>
-              <input className='input-fields' type="text" name="lastName"  
-            value={values.lastName} onChange={handleInputChange} placeholder="Прізвище" required />
-            <button className={'lastname-btn ' + applyErrorClass('lastName')} onClick={name => {name = 'lastName'; handleInputClear(name)}}>
-            <img src="button.svg" alt="x" />
-            </button>
-            </div>
-            
-            <div className='input-text'>
-              
-              Дата народження
-              <span className="required">*</span>
-            </div>
-            <BirthdayPicker value= {date} setValue ={setDate} classes={'select-input'}/>     
-            <div className='input-text'>
-              Поштова адреса
-              <span className="required">*</span>
-            </div>       
-            <input type="email" pattern=".+@globex\.com" className='input-fields' id='email-input'  name="email" value={values.email} 
-            onChange={handleInputChange}  placeholder="example@domain.com" required />
-            <span className='email-valid'>{emailError}</span>  
-            <button className='back-btn' type="submit" value="back">Назад</button>
-            <button className='reg-btn' type="submit" value="save" disabled={!values.email || !values.firstName || !values.lastName || !date ||!values.imageFile}>Зберегти</button>
-          </form>
+      <span className={styles.regInfo}> Особисті дані</span>
+      <form autoComplete="off" noValidate onSubmit={handleFormSubmit}>
+      <img src={values.imageSrc} className={'img-fluid '+styles.inputPhoto} id="image-uploader" alt='upload'/>
+        <input className={styles.inputFile + ' ' + applyErrorClass('imageSrc')} type="file" name='photo' accept="image/*" 
+        onChange={showPreview} required/> 
+        <div className={styles.inputText}>
+          Ім'я
+        </div>  
+        <input className={styles.inputFields} type="text" name="firstName"  
+        value={values.firstName} onChange={handleInputChange} placeholder="Ім'я" required />
+        <button className={styles.lastnameBtn + ' ' + applyErrorClass('firstName')} onClick={name => {name = 'firstName'; handleInputClear(name)}} >
+        <img src="button.svg" alt="x" />
+        </button>
+        <div className={styles.inputText}>
+          Прізвище
         </div>
-      </div>
-    </div>
+        <div>
+          <input className={styles.inputFields} type="text" name="lastName"  
+        value={values.lastName} onChange={handleInputChange} placeholder="Прізвище" required />
+        <button className={styles.lastnameBtn + ' ' + applyErrorClass('lastName')} onClick={name => {name = 'lastName'; handleInputClear(name)}}>
+        <img src="button.svg" alt="x" />
+        </button>
+        </div>
+        
+        <div className={styles.inputText}>
+          
+          Дата народження
+        </div>
+        <BirthdayPicker value= {date} setValue ={setDate} classes={styles.selectInput}/>     
+        <div className={styles.inputText}>
+          Поштова адреса
+        </div>       
+        <input type="email" className={styles.inputFields} id='email-input'  name="email" value={values.email} 
+        onChange={handleInputChange}  placeholder="example@domain.com" required />
+        <span className={styles.emailValid}>{emailError}</span>  
+        <button className={styles.backBtn} type="reset" value="back">Назад</button>
+        <button className={styles.regBtn} type="submit" value="save" disabled={emailError !== '' || !values.firstName || !values.email || !values.lastName || !date ||!values.imageFile}>Зберегти</button>
+      </form>
     </>
   )
 }

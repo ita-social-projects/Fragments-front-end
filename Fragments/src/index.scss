@@ -13,3 +13,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.reg-form{
+  box-sizing: border-box;
+  margin: 150px 30%;
+  padding: 44px;
+  width: 800px;
+  height: 828px;
+  font-family: 'Mulish';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.3px;
+  border: 2px solid;
+  border-image: linear-gradient(180deg, #4F33FD 33.06%, #FCA119 100%) 1;
+}

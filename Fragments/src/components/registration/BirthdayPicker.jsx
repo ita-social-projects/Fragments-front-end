@@ -1,11 +1,11 @@
-import React, {useState, useCallback } from 'react';
+import React, {useCallback } from 'react';
 import { SelectDatepicker } from 'react-select-datepicker';
 
 
 const BirthdayPicker = ({value, setValue, classes}) => {
   const onDateChange = useCallback((date) => {
     setValue(date);
-  }, []);
+  }, [setValue]);
 
   return (
     <SelectDatepicker
