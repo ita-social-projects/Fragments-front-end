@@ -19,6 +19,10 @@
 .channelAndChannel{
     margin-right: 16px;
 }
+.detailsAndInputAndDelete{
+    max-width: 560px;
+    width: 100%;
+}
 .channelOfConntection{
     display: inline-block;
     box-sizing: border-box;

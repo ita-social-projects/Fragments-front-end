@@ -53,7 +53,7 @@ const Channeldetails = ({ ...props }) => {
                   ))}
                 </select>
               </div>
-              <div className="Details">
+              <div className={stylescenter.detailsAndInputAndDelete}>
                 <p className={stylescenter.channelOfConntection}>
                   Деталі
                 </p>
