@@ -7,11 +7,11 @@
 }
 .header_welcome_text h2{
     font-size: 2.25rem;
-    font-family: 'Montserrat Alternates';
+    font-family: 'Montserrat Alternates', sans-serif;
     font-weight: 500;
 }
 .header_welcome_text h3{
-    font-family: 'Mulish';
+    font-family: 'Mulish', sans-serif;
     font-weight: 400;
     font-size: 1.125rem;
 }

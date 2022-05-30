@@ -94,9 +94,8 @@ const RegistrationDetails = ({ ...props }) => {
       />
       <button
         className={styles.lastnameBtn + " " + applyErrorClass("name")}
-        onClick={(name) => {
-          name = "name";
-          handleInputClear(name);
+        onClick={() => {
+          handleInputClear("name");
         }}
       >
         <img src="button.svg" alt="x" />

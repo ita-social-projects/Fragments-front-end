@@ -6,7 +6,7 @@
 }
 
 .postCheckboxRepresentative{
-    font-family: 'Mulish';
+    font-family: 'Mulish', sans-serif;
     display: flex;
     flex-wrap: wrap;
     justify-content:space-around;

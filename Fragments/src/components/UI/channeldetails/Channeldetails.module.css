@@ -26,7 +26,7 @@
     max-width: 560px;
     width: 100%;
     height: 18px;
-    font-family: 'Mulish';
+    font-family: 'Mulish', sans-serif;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;
@@ -36,7 +36,7 @@
 }
 .selecterOptions{
     margin-bottom: 8px;
-    font-family: 'Mulish';
+    font-family: 'Mulish', sans-serif;
     font-style: normal;
     font-weight: 400;
     max-width: 136px;
@@ -87,7 +87,7 @@
 }
 
 .removeButtonText{
-    font-family: 'Mulish';
+    font-family: 'Mulish', sans-serif;
     font-size: 14px;
     font-weight: 500;
     line-height: 20px;
@@ -106,7 +106,7 @@
 }
 
 .addButtonText{
-    font-family: 'Mulish';
+    font-family: 'Mulish', sans-serif;
     color: black;
     
     font-size: 14px;

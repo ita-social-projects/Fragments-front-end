@@ -31,7 +31,7 @@
     width: 123px;
     height: 52px;
     text-transform: none;
-    font-family: 'Mulish';
+    font-family: 'Mulish', sans-serif;
     font-weight: 500;
 }
 .regInfo{
