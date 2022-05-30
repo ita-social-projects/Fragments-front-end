@@ -26,6 +26,7 @@ const Checkbox = ({ ...props }) => {
           />
           <p>представник ЗВО</p>
         </div>
+        
       </div>
     </div>
   );

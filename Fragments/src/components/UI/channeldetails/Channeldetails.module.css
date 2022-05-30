@@ -1,10 +1,11 @@
-
+.fullChannelControll{
+    display: flex;
+}
 .detailsChannelInput{
-    /* max-width: 502px; */
-    padding-bottom: 10px;
+    max-width: 560px;
     width: 100%;
-    height: 65px;
-    padding: 8px 0px;
+    height: 44px;
+    padding: 8px 0px 10px 0px;
     box-sizing: border-box;
     border: 0px solid white;
     border-bottom: 2px solid black;
@@ -15,11 +16,15 @@
 .detailsChannelInput ::after{
     border: 0px solid white;
 }
+.channelAndChannel{
+    margin-right: 16px;
+}
 .channelOfConntection{
-    margin-top: 40px;
     display: inline-block;
     box-sizing: border-box;
-    width: 505px;
+    min-width: 136px;
+    max-width: 560px;
+    width: 100%;
     height: 18px;
     font-family: 'Mulish';
     font-style: normal;
@@ -34,16 +39,18 @@
     font-family: 'Mulish';
     font-style: normal;
     font-weight: 400;
+    max-width: 136px;
+    width: 100% ;
     font-size: 18px;
+    height: 44px;
     line-height: 24px;
     display: flex;
     align-items: center;
     box-sizing: border-box;
     border: 0px solid white;
     border-bottom: 2px solid black;
-    /* padding: 0 20px 12px 20px; */
-    /* gap: 10px; */
     outline: none;
+    
 }
 
 .selecterOptions option{

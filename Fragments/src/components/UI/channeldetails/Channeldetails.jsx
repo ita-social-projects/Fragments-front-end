@@ -28,18 +28,13 @@ const Channeldetails = ({ ...props }) => {
     setInputFieldsAndOptions(values);
   };
 
-  function charCount(startFrom, charend) {
-    var len = document.getElementById(startFrom).value.length;
-    document.getElementById(charend).innerHTML = len;
-  }
-
   return (
     <div>
       <div className="button_addConnection">
         <div className={stylescenter.detailsChannelAndInput}>
           {inputFieldsAndOptions.map((element, index) => (
-            <div key={index}>
-              <div>
+            <div key={index} className={stylescenter.fullChannelControll}>
+              <div className={stylescenter.channelAndChannel} >
                 <p className={stylescenter.channelOfConntection}>
                   Канал зв'язку
                 </p>
@@ -59,31 +54,10 @@ const Channeldetails = ({ ...props }) => {
                 </select>
               </div>
               <div className="Details">
-                <div className={stylescenter.charAmount}>
-                  <>
-                    <span id={"letters" + index}>0</span>/100
-                  </>
-                </div>
+                <p className={stylescenter.channelOfConntection}>
+                  Деталі
+                </p>
                 <textarea
-                  onKeyUp={() =>
-                    charCount(
-                      "input_details_selecter" + index,
-                      "letters" + index
-                    )
-                  }
-                  onKeyDown={() =>
-                    charCount(
-                      "input_details_selecter" + index,
-                      "letters" + index
-                    )
-                  }
-                  onMouseOut={() =>
-                    charCount(
-                      "input_details_selecter" + index,
-                      "letters" + index
-                    )
-                  }
-                  id={"input_details_selecter" + index}
                   maxLength="100"
                   rows="2"
                   onChange={(event) =>
@@ -92,7 +66,7 @@ const Channeldetails = ({ ...props }) => {
                   value={element.details}
                   className={stylescenter.detailsChannelInput}
                   name="details"
-                  placeholder="Деталі"
+                  placeholder="введіть телефон або @username"
                 />
                 <div className={stylescenter.removeButtons}>
                   {index !== 0 && (

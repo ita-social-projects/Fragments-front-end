@@ -96,7 +96,7 @@ button.backBtn{
     box-sizing: border-box;
     height: 15px;
     font-weight: 400;
-    margin: 8px auto 50px auto;
+    margin: 10px auto 30px auto;
     font-size: 12px;
     line-height: 15px;
     color: #E93333;
@@ -132,8 +132,9 @@ select{
     {
         color: #ccc;
     }
-    min-width: 223px;//treba duvutis
-    width: 3.5rem;
+   // max-width: 223px;
+    width: 223px;//treba duvutis
+
 
     height: 32px;
     padding-bottom: 8px;
