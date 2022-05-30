@@ -73,7 +73,6 @@
     outline: none;
 }
 .charAmount{
-    /* max-width: 502px; */
     font-size: small;
     width: 100%;
     display: flex;
