@@ -23,9 +23,9 @@ const Channeldetails = ({ ...props }) => {
   };
 
   const handleRemoveField = (index) => {
-    const values = [...inputFieldsAndOptions];
-    values.splice(index, 1);
-    setInputFieldsAndOptions(values);
+    const previousvalues = [...inputFieldsAndOptions];
+    previousvalues.splice(index, 1);
+    setInputFieldsAndOptions(previousvalues);
   };
 
   return (

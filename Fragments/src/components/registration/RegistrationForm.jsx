@@ -51,9 +51,9 @@ const RegistrationForm = () => {
 
   const handleChangeDetailsAndOptions = useCallback(
     (index, event) => {
-      const values = [...inputFieldsAndOptions];
-      values[index][event.target.name] = event.target.value;
-      setInputFieldsAndOptions(values);
+      const previousvalues = [...inputFieldsAndOptions];
+      previousvalues[index][event.target.name] = event.target.value;
+      setInputFieldsAndOptions(previousvalues);
     },
     [inputFieldsAndOptions]
   );
