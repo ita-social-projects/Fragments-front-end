@@ -1,0 +1,30 @@
+.container{
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: radial-gradient(50% 50% at 50% 50%, #95e0736e 21.21%, rgba(150, 224, 115, 0) 100%);
+    
+}
+.headerText{
+    width: 800px;
+    height: 48px;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 36px;
+    line-height: 48px;
+    text-align: center;
+    margin: 50px 0px 8px 0px;
+}
+.infoText{
+    width: 800px;
+    height: 28px;
+    font-family: 'Mulish', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    text-align: center;
+}
