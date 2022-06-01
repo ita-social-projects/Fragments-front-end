@@ -3,6 +3,7 @@ import axios from "axios";
 const userAPI = (url = 'https://localhost:44361/api/Users') => {
     return {
         create: newRecord => axios.post(url, newRecord),
+        
     }
 }
 const addUser = (formData) => {
@@ -11,5 +12,6 @@ const addUser = (formData) => {
           .catch(err => console.log(err))
         }
 }
+
 
 export default addUser;

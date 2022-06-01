@@ -1,23 +1,22 @@
 import React, { useState, useCallback } from "react";
 import { Button } from "@mui/material";
 import stylescenter from "../UI/centerbody/center.body.module.css";
-import Welcome from "../UI/welcome/Welcome";
 import Checkbox from "../UI/checkbox/Checkbox";
 import Benefits from "../UI/benefits&interests/benefits/Benefits";
 import Interests from "../UI/benefits&interests/interests/Interests";
 import Channeldetails from "../UI/channeldetails/Channeldetails";
 import RegistrationDetails from "../UI/registrationDetails/RegistrationDetails";
-import { useLocation } from "react-router-dom";
+import addUser from "../registration/Requests";
 
-const RegistrationForm = () => {
-  const info =  useLocation().state;
- // const defaultImageSrc = "/logo192.png";
+const ProfileEdit = () => {
+  const defaultImageSrc = "/logo192.png";
 
-  const initialFieldValues =  {
-    userID: info.userId,
-    email: info.email,
-    name: info.fullname,
-    imageSrc: info.picture,
+  const initialFieldValues = {
+    userID: 0,
+    email: "",
+    name: "",
+    date: "",
+    imageSrc: defaultImageSrc,
     imageFile: null,
   };
 
@@ -46,8 +45,8 @@ const RegistrationForm = () => {
       governmentBox: checkedBoxOne,
       educationBox: checkedBoxTwo,
       channel: inputFieldsAndOptions
-    } 
-    console.log(formData)
+    }
+    addUser(formData);
   };
 
   const handleChangeDetailsAndOptions = useCallback(
@@ -77,10 +76,9 @@ const RegistrationForm = () => {
 
   return (
     <div className={stylescenter.center_body}>
-      <Welcome />
       <div className={stylescenter.border_center}>
         <span className={stylescenter.regInfo}> Особисті дані</span>
-        <form autoComplete="off" noValidate onSubmit={handleFormSubmit}>
+        <form autoComplete="off" onSubmit={handleFormSubmit} noValidate>
           <RegistrationDetails
             values={values}
             setValues={setValues}
@@ -114,7 +112,7 @@ const RegistrationForm = () => {
             <button className={stylescenter.backBtn} type="reset" value="back">
               Назад
             </button>
-            <Button variant="contained" type="submit" disabled = {errors !== '' || !values.name || !values.email ||  !date }>
+            <Button variant="contained" type="submit" disabled = {errors !== '' || !values.name || !values.email ||  !date } >
               Зберегти
             </Button>
           </div>
@@ -124,4 +122,4 @@ const RegistrationForm = () => {
   );
 };
 
-export default RegistrationForm;
+export default ProfileEdit;

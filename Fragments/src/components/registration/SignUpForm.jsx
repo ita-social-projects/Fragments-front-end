@@ -1,39 +1,45 @@
-import React from 'react'
+import React ,{useEffect}from 'react'
 import FacebookLogin from 'react-facebook-login'
 import {useNavigate} from 'react-router-dom'
 import '../scss/signup.scss'
 import {GoogleLogin} from 'react-google-login'
+import {gapi} from 'gapi-script';
 const clientId = "366436901363-b93c7i7nj1rmvnle6m992dgecfsf4bcd.apps.googleusercontent.com"
+const FacebookAppId = '414490970111119';
+
 const LoginForm = () => {
+    useEffect(()=>{
+        function start(){
+          gapi.client.init({
+            clientId: clientId,
+            scope: ""
+          })
+        };
+        gapi.load('client:auth2',start);
+      });
     const navigate = useNavigate();
 
     const state = {
         isLoggedIn:false,
         userId:"",
-        firstname:"",
-        lastname:"",
+        fullname:"",
         email:"",
         picture:""
     }
     const responseFacebook = (response) =>{
-        const fullname = response.name.split(' ');
         state.isLoggedIn = true;
         state.userId = response.id;
-        state.firstname = fullname[0];
-        state.lastname = fullname[1];
+        state.fullname = response.name;
         state.email = response.email;
         state.picture = response.picture.data.url;
         navigate('/Details',{state:state})
     }
     const responseSuccessGoogle = (response) =>{
-        console.log("Login is success",response.profileObj);
-        state.userId = response.profileObj.googleId;
         state.isLoggedIn = true;
+        state.userId = response.profileObj.googleId;
+        state.fullname = response.profileObj.name;
         state.email = response.profileObj.email;
-        state.firstname = response.profileObj.givenName;
-        state.lastname =response.profileObj.familyName ;
         state.picture = response.profileObj.imageUrl;
-        //console.log(response);
         navigate('/Details',{state:state})
     }
     const responseFailureGoogle = (response) =>{
@@ -49,31 +55,32 @@ const LoginForm = () => {
                   <div className="control-group">
                       <label className="control-label"></label>
                       <div className="controls">
-                        <FacebookLogin cssClass='logbutton btn btn-outline-dark'                
-                            appId='414490970111119'
-                            autoLoad={true}
-                            cookie={true}
-                            xfbml={true}
-                            fields="name,email,picture"
-                            textButton='Продовжити через Facebook'
-                            callback={responseFacebook}
-                        />
-                      </div>
-                      <label className="control-label"></label>
-                      <div className="controls">
-                      <GoogleLogin  className ='logbutton btn btn-outline-dark'            
+                      <GoogleLogin          
                             clientId={clientId}
                             render={renderProps => (
-                                <button onClick={renderProps.onClick} className ='logbutton btn btn-outline-dark'> <img src = "GoogleLogo.svg" alt="search"/> Продовжити через Google</button>
+                                <button onClick={renderProps.onClick} className ='logbutton'> <img className = "svg1" src = "GoogleLogo.svg" alt="Google" /> Продовжити через Google</button>
                               )}
                             onSuccess={responseSuccessGoogle}
                             onFailure = {responseFailureGoogle}
                             cookiePolicy = {'single_host_origin'}
-                        />
+                        /> 
+                      <label className="control-label"></label>
+                      <div className="controls">
+                        <FacebookLogin cssClass='logbutton' 
+                            icon={<img className = "svg1" src = "Facebook.svg" alt="filter applied"/>}   
+                            appId={FacebookAppId}
+                            autoLoad={true}
+                            cookie={true}
+                            xfbml={true}
+                            callback={responseFacebook}
+                            textButton="Продовжити через Facebook"
+                            fields="name,email,picture"
+                            />
+                      </div>
                       </div>
                       <label className="control-label"></label>
                       <div className="controls">
-                          <button className='logbutton btn btn-outline-dark'>Продовжити через Instagram</button>
+                          <button className='logbutton'><img className = "svg1"  src = "Instagram.svg" alt="Facebook"/> Продовжити через Instagram</button>
                       </div>
                   </div>
 
