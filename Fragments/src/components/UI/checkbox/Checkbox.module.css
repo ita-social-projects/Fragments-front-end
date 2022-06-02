@@ -1,0 +1,24 @@
+.roleCenter{
+    display: block;
+    font-size: 1.3rem;
+    font-weight: 500;
+    line-height: 2rem;
+}
+
+.postCheckboxRepresentative{
+    font-family: 'Mulish', sans-serif;
+    display: flex;
+    flex-wrap: wrap;
+    padding-right: 56px;
+    font-size: 1.125rem;
+    box-sizing: border-box;
+    font-weight: 400;
+}
+.postCheckboxRepresentative p{
+    display: inline-block;
+    padding-left: 15px;
+    padding-right: 24px;
+}
+.roleCheckboxPos{
+    padding-top: 58px;
+}

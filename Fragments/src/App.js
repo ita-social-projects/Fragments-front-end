@@ -1,9 +1,15 @@
 import React from 'react';
+import Header from './components/header/Header';
+import RegistrationForm from './components/registration/RegistrationForm'
 
 function App() {
+
   return (
-    <header>Hello, World!</header>
+    <>
+    <Header/>
+    <RegistrationForm/>
+            
+  </>
   );
 }
-
 export default App;

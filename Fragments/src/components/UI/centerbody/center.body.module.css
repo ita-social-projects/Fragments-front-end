@@ -1,0 +1,66 @@
+.center_body{
+    align-content: center;
+}
+
+.border_center{
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+    border: 2px solid black;
+    border-image: linear-gradient(180deg, #4F33FD 33.06%, #FCA119 100%) 1;
+    padding: 44px 45px 52px 44px;
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
+.benefits_and_interest{
+    margin-top: 40px;
+}
+.button_submit{
+    /* max-width: 502px; */
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    padding: 52px 0 0 0;
+}
+
+.button_submit button{
+    background-color: black;
+    border-radius: 35px;
+    width: 123px;
+    height: 52px;
+    text-transform: none;
+    font-family: 'Mulish', sans-serif;
+    font-weight: 500;
+}
+.regInfo{
+    display: inline-block;
+    width: 505px;
+    height: 36px;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 36px;
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 1;
+}
+
+.button_submit button:hover {
+    border: 2px solid black;
+    background-color: #fff;
+    color: black;
+}
+button.backBtn{
+    display: inline-block;
+    /* padding: 14px 20px; */
+
+    width: 98px;
+    height: 52px;
+    border: 2px solid #000000;
+    border-radius: 990px;
+    margin-right: 15px;
+    color: #000000;
+    background-color: white;
+}

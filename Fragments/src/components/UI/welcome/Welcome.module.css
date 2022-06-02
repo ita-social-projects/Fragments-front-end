@@ -1,0 +1,17 @@
+.header_welcome_text{
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 72px;
+    margin-bottom: 52px;
+}
+.header_welcome_text h2{
+    font-size: 2.25rem;
+    font-family: 'Montserrat Alternates', sans-serif;
+    font-weight: 500;
+}
+.header_welcome_text h3{
+    font-family: 'Mulish', sans-serif;
+    font-weight: 400;
+    font-size: 1.125rem;
+}
