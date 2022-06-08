@@ -12,6 +12,7 @@
     margin-bottom: 15px;
     outline: none;
     resize: none;
+    font-family: 'Mulish', sans-serif;
 }
 .detailsChannelInput ::after{
     border: 0px solid white;

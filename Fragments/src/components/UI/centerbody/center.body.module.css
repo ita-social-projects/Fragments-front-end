@@ -10,7 +10,7 @@
     border: 2px solid black;
     border-image: linear-gradient(180deg, #4F33FD 33.06%, #FCA119 100%) 1;
     padding: 44px 45px 52px 44px;
-    font-family: 'Montserrat Alternates', sans-serif;
+    /* font-family: 'Montserrat Alternates', sans-serif; */
 }
 
 .benefits_and_interest{
@@ -45,6 +45,7 @@
     order: 0;
     align-self: stretch;
     flex-grow: 1;
+    font-family: 'Montserrat Alternates', sans-serif;
 }
 
 .button_submit button:hover {

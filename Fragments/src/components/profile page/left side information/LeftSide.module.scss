@@ -1,0 +1,138 @@
+  .photos {
+    min-width: 100px;
+    max-width: 120px;
+    width: 100%;
+  }
+  
+  .photoPos {
+    padding: 52px 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+  }
+  
+  .firstLastName {
+    margin-top: 25px;
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    font-family: "Montserrat Alternates";
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 32px;
+  }
+  
+  .dateOfBirth {
+    margin-top: 8px;
+    display: flex;
+    font-family: "Mulish";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    /* identical to box height, or 133% */
+    justify-content: center;
+    text-align: center;
+  
+    color: #414045;
+  }
+  
+  .representativeHEI{
+    margin-top: 8px;
+    margin-bottom: 22px;
+    display: flex;
+    font-family: "Mulish";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    /* identical to box height, or 150% */
+    justify-content: center;
+    text-align: center;
+    color: #414045;
+  
+  }
+  
+  .editLeftSide{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  .editText{
+    margin-right: 8px;
+    margin-bottom: 0px;
+    width: 91px;
+    height: 20px;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 20px;
+    color: #909095;
+  }
+  
+  .editButton{
+    display: flex;
+    background-color: #ffffff;
+    border: none;
+    padding: 0;
+    height: 16px;
+  }
+  
+  .editButtonImage{
+    padding-bottom: 10px;
+  }
+  
+  .applyButton{
+    margin-top: 400px;
+    display:flex;
+    justify-content: center;
+    align-self: end;
+    margin-bottom: 32px;
+  }
+  
+  .application{
+    border: 0px #ffffff;
+    padding: 14px 20px;
+    gap: 10px;
+    max-width: 216px;
+    width: 100%;
+    height: 52px;
+    background: #4F33FD;
+    border-radius: 999px;
+    font-family: 'Mulish', sans-serif;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 20px;
+    display: flex;
+    // flex: none;
+    justify-content: center;
+    align-items: center;
+    letter-spacing: 0.2px;
+    margin-left: 5px;
+  
+  }
+  
+  .settingsAndExit{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+  border-top: 2px solid #F1F1F4;;
+  height: 88px;
+  }
+  
+  .settingsExit{
+    padding-top: 20px;
+    font-family: 'Mulish';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    color: #414045; 
+  }
+  a{
+    text-decoration: none !important;
+  }
