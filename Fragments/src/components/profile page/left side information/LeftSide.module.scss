@@ -37,16 +37,15 @@
     color: #414045;
   }
   
-  .representativeHEI{
+  .representative{
     margin-top: 8px;
     margin-bottom: 22px;
-    display: flex;
+    display: block;
     font-family: "Mulish";
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
     line-height: 24px;
-    /* identical to box height, or 150% */
     justify-content: center;
     text-align: center;
     color: #414045;
@@ -61,7 +60,6 @@
   .editText{
     margin-right: 8px;
     margin-bottom: 0px;
-    width: 91px;
     height: 20px;
     font-family: 'Mulish';
     font-style: normal;

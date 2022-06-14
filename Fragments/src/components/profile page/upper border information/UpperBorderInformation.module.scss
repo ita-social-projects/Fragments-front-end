@@ -1,0 +1,96 @@
+.backButton {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: #ffffff;
+  width: 221px;
+  gap: 8px;
+  height: 36px;
+  margin-top: 26px;
+  background: #f8f8f9;
+  border-radius: 999px;
+  margin-bottom: 40px;
+}
+
+.backButtonText {
+  width: 173px;
+  height: 20px;
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.2px;
+  color: #000000;
+}
+.bigTextBox {
+  margin-bottom: 32px;
+  display: flex;
+}
+
+.bigText {
+  font-family: "Montserrat Alternates";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  color: #000000;
+  margin-right: 22px;
+}
+.editButtonImage {
+  padding-top: 6px;
+}
+.editButton {
+  display: block;
+  background-color: #ffffff;
+  border: none;
+  padding: 0;
+  height: 20px;
+}
+
+.gmailTextBox{
+margin-bottom: 32px;
+display: block;
+}
+.simpleText {
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.2px;
+  display:flex;
+  color: #909095;
+  margin-bottom: 4px;
+}
+
+.dataText {
+  font-family: "Montserrat Alternates";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 28px;
+  color: #000000;
+  display: flex;
+  align-self: stretch;
+}
+
+.detailsTextBox{
+    display: block;
+
+}
+.channelBox{
+    margin-right: 92px;
+}
+.upperBorderBorder{
+    border-bottom: 2px solid #000000;
+    margin-bottom: 49px;
+    max-width: 1600px;
+    width: 100%;
+}
+.channelAndTextBox{
+  display: flex;
+  margin-bottom: 32px ;
+}
