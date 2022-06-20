@@ -3,6 +3,7 @@ import FacebookLogin from 'react-facebook-login'
 import {useNavigate} from 'react-router-dom'
 import styles from '../UI/signup.module.scss'
 import {GoogleLogin} from 'react-google-login'
+
 const clientId = "366436901363-b93c7i7nj1rmvnle6m992dgecfsf4bcd.apps.googleusercontent.com"
 const FacebookAppId = '505126904671302';
 
@@ -83,6 +84,3 @@ const LoginForm = () => {
   }
 
 export default LoginForm;
-/*render={renderProps => (
-    <button  className='logbutton btn btn-outline-dark' onClick={renderProps.onClick}><img src = "Facebook.svg" alt="Facebook"/> Продовжити через Facebook</button>
-  )}*/
