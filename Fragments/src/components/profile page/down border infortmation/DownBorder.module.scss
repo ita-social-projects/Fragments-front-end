@@ -1,0 +1,36 @@
+.thisBox{
+    margin-bottom: 40px;
+}
+.bigTextBox {
+    margin-bottom: 32px;
+    display: flex;
+  }
+  
+  .bigText {
+    font-family: "Montserrat Alternates", sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 32px;
+    color: #000000;
+    margin-right: 22px;
+  }
+  .editButtonImage {
+    padding-top: 6px;
+  }
+  .editButton {
+    display: block;
+    background-color: #ffffff;
+    border: none;
+    padding: 0;
+    height: 20px;
+  }
+
+  .text{
+    font-family: 'Mulish', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 28px;
+    color: #162035;
+  }

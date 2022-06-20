@@ -4,6 +4,10 @@
     margin-bottom: 12px;
 }
 
+.interestsText{
+    font-family: 'Montserrat Alternates', sans-serif;
+}
+
 .hintButton p{
     border-radius: 50%;
     font-size: 11px;
@@ -21,6 +25,7 @@
     top: 4px;
     left: 0;
     cursor: default;
+    font-family: 'Mulish', sans-serif;
 }
 
 .charAmount{
@@ -30,6 +35,7 @@
     justify-content: flex-end;
     align-items: center;
     color: #909095;
+    font-family: 'Mulish', sans-serif;
 }
 
 .multiInput{
@@ -42,4 +48,5 @@
     margin-bottom: 15px;
     outline: none;
     resize: none;
+    font-family: 'Mulish', sans-serif;
 }

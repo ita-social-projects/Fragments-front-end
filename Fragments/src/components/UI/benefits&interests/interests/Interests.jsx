@@ -10,7 +10,9 @@ const Interests = ({ ...props }) => {
   return (
     <div name="Interests" className={stylescenter.informationAboutUser}>
       <div className={stylescenter.hintItems}>
+        <p className={stylescenter.interestsText}>
         Мої інтереси
+        </p>
         <span
           className={stylescenter.hintButton}
           data-tip="Введіть інформацію про себе"

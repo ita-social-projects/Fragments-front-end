@@ -11,7 +11,9 @@ const Benefits = ({ ...props }) => {
   return (
     <div name="Benefits" className={stylescenter.informationAboutUser}>
       <div className={stylescenter.hintItems}>
+        <p className={stylescenter.benefitsText}>
         Чим можу бути корисним
+        </p>
         <span
           className={stylescenter.hintButton}
           data-tip="Введіть інформацію про себе"

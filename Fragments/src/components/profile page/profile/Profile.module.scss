@@ -1,0 +1,56 @@
+.fullPage {
+  position: absolute; // Щоб тінь від хедера падала
+  z-index: -999;
+  max-width: 1920px;
+  width: 100%;
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+  margin-right: 0px !important;
+  margin-left: 0px !important;
+}
+
+.leftSide {
+  max-width: 320px;
+  min-width: 320px;
+  padding: 0px 0px 0px 0px !important;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0px 4px 8px rgba(65, 64, 69, 0.2);
+  height: 952px;
+  align-self: center;
+}
+
+.centerInfo{
+  max-width: (1439px);
+  width: 100%;
+  margin-left: 3.25rem;
+}
+
+.backButton{
+  display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+border: #ffffff;
+width: 221px;
+gap:8px;
+height: 36px;
+margin-top: 26px;
+background: #F8F8F9;
+border-radius: 999px;
+}
+
+.backButtonText{
+  width: 173px;
+height: 20px;
+font-family: 'Mulish', sans-serif;
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 20px;
+text-align: center;
+letter-spacing: 0.2px;
+color: #000000;
+}
+
+
