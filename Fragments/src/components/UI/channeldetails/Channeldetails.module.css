@@ -107,6 +107,11 @@
     text-transform: none;
     background-color: #fff;
 }
+button.addButton:disabled{
+    background: #C1C1C5;
+    border: none;
+    color: white;
+}
 
 .addButtonText{
     font-family: 'Mulish', sans-serif;

@@ -4,7 +4,7 @@ import stylescenter from "./Channeldetails.module.css";
 
 const Channeldetails = ({ ...props }) => {
   const options = [
-    { value: "none", label: "" },
+    { value: "", label: "" },
     { value: "viber", label: "Viber" },
     { value: "telegram", label: "Telegram" },
     { value: "messenger", label: "Messenger" },
@@ -15,10 +15,15 @@ const Channeldetails = ({ ...props }) => {
   const setInputFieldsAndOptions = props.setInputFieldsAndOptions;
   const inputFieldsAndOptions = props.inputFieldsAndOptions;
 
+  const checkEmptyChannels = () => {
+    const values = [...inputFieldsAndOptions];
+    return values.some(element => Object.values(element).some(val => val === null || val === ""));
+  };
+
   const handleAddDetails = () => {
     setInputFieldsAndOptions([
       ...inputFieldsAndOptions,
-      { optionSelected: "", details: "" },
+      { channelName: "", channelDetails: "" },
     ]);
   };
 
@@ -40,7 +45,7 @@ const Channeldetails = ({ ...props }) => {
                 </p>
                 <select
                   className={stylescenter.selecterOptions}
-                  name="optionSelected"
+                  name="channelName"
                   onChange={(event) =>
                     handleChangeDetailsAndOptions(index, event)
                   }
@@ -63,9 +68,9 @@ const Channeldetails = ({ ...props }) => {
                   onChange={(event) =>
                     handleChangeDetailsAndOptions(index, event)
                   }
-                  value={element.details}
+                  value={element.channelDetails}
                   className={stylescenter.detailsChannelInput}
-                  name="details"
+                  name="channelDetails"
                   placeholder="введіть телефон або @username"
                 />
                 <div className={stylescenter.removeButtons}>
@@ -88,8 +93,8 @@ const Channeldetails = ({ ...props }) => {
           <button
             type="button"
             className={stylescenter.addButton}
-            onClick={() => handleAddDetails()
-            }
+            onClick={() => handleAddDetails()}
+            disabled={checkEmptyChannels(inputFieldsAndOptions)}
           >
             <img src="plus.svg" alt="plus logo" />
             <span className={stylescenter.addButtonText}>
