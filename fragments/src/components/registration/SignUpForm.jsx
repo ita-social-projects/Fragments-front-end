@@ -5,7 +5,7 @@ import styles from '../scss/signup.module.scss'
 import {GoogleLogin} from 'react-google-login'
 const clientId = "366436901363-b93c7i7nj1rmvnle6m992dgecfsf4bcd.apps.googleusercontent.com"
 const FacebookAppId = '505126904671302';
-//DSAD
+//DFSF
 const LoginForm = () => {
     const navigate = useNavigate();
 
