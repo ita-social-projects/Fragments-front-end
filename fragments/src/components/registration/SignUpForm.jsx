@@ -1,11 +1,11 @@
 import React from 'react'
 import FacebookLogin from 'react-facebook-login'
 import {useNavigate} from 'react-router-dom'
-import styles from '../scss/signup.module.scss'
+import styles from '../UI/signup.module.scss'
 import {GoogleLogin} from 'react-google-login'
 const clientId = "366436901363-b93c7i7nj1rmvnle6m992dgecfsf4bcd.apps.googleusercontent.com"
 const FacebookAppId = '505126904671302';
-//DFSF
+
 const LoginForm = () => {
     const navigate = useNavigate();
 
@@ -30,8 +30,7 @@ const LoginForm = () => {
         state.userId = response.profileObj.googleId;
         state.isLoggedIn = true;
         state.email = response.profileObj.email;
-        state.firstname = response.profileObj.givenName;
-        state.lastname =response.profileObj.familyName ;
+        state.fullname = response.profileObj.givenName + response.profileObj.familyName;
         state.picture = response.profileObj.imageUrl;
         navigate('/Details',{state:state})
     }
