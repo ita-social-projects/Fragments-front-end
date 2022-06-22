@@ -7,16 +7,15 @@ import Benefits from "../UI/benefits&interests/benefits/Benefits";
 import Interests from "../UI/benefits&interests/interests/Interests";
 import Channeldetails from "../UI/channeldetails/Channeldetails";
 import RegistrationDetails from "../UI/registrationDetails/RegistrationDetails";
+import { useLocation } from "react-router-dom";
 
 const RegistrationForm = () => {
-  const defaultImageSrc = "/logo192.png";
-
+  const info =  useLocation().state;
   const initialFieldValues = {
-    userID: 0,
-    email: "",
-    name: "",
-    date: "",
-    imageSrc: defaultImageSrc,
+    userID: info.userId,
+    email: info.email,
+    name: info.fullname,
+    imageSrc: info.picture,
     imageFile: null,
   };
 
