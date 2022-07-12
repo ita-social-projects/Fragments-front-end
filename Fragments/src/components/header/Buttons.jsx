@@ -1,15 +1,14 @@
 import React from "react";
-import { loginUser } from "../../services/userService";
+import { useNavigate } from "react-router-dom";
 
-const request = {
-  email : 'petro@gmail.com'
+const state = {
+  action: 'login'
 }
 
 const Buttons = ({ ...props }) => {
-  const fetchSignIn = (e) =>{
-    loginUser(request);
-    
-}
+  const navigate = useNavigate();
+  const fetchSignIn = () => navigate('/Sign-up', {state:state});
+
   return (
     <>
       <span className={props.className.searchIcon}>

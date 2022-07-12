@@ -99,18 +99,21 @@
   padding: 2px 0px 0px 12px;
   width: 180px;
   height: 40px;
-  background: #FFFFFF;
-  border: 1px solid #000000;
+  gap: 8px;
+  margin-bottom: 8px;
+  border: 2px solid #000000;
+  border-radius: 999px;  
   border-radius: 999px;
   cursor: pointer;
-  flex: none;
-order: 2;
-flex-grow: 0;
+    flex: none;
+  order: 2;
+  flex-grow: 0;
 }
 img.userAvatar {
   width: 36px;
   height: 36px;
   border-radius: 999px;
+  margin-right: 8px;
 }
 .userName {
   font-family: "Mulish", sans-serif;
