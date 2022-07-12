@@ -6,7 +6,6 @@ const loginUser = (request) => {
     .post(`${variables.API_URL}Users/login`, request)
     .then((response) => {
       window.localStorage.setItem('token', response.data.token);
-      window.location.reload();
     })
   .catch((error) => console.error(`Error: ${error}`));
  
@@ -19,7 +18,7 @@ const getUser = (token, setUser) => {
         };
           axios
           .get(`${variables.API_URL}Users/get-me`, options)
-          .then((response) => setUser(response.data))
+          .then((response) => setUser(response.data)) 
           .catch((err) => console.log(err));
       }
 
