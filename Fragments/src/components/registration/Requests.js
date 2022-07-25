@@ -3,7 +3,7 @@ import variables from "../important variables/variables";
 
 const userAPI = () => {
     return {
-        create: newRecord => axios.post(variables.API_URL+'Users/register', newRecord),
+        create: newRecord => axios.post(`${variables.API_URL}Users/register`, newRecord),
     }
 }
 const addUser = (formData) => {

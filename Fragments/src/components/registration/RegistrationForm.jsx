@@ -1,6 +1,6 @@
 import React, { useState, useCallback } from "react";
 import { Button } from "@mui/material";
-import {useLocation} from 'react-router-dom'
+import { useLocation } from "react-router-dom";
 import stylescenter from "../UI/centerbody/center.body.module.css";
 import Welcome from "../UI/welcome/Welcome";
 import Checkbox from "../UI/checkbox/Checkbox";
@@ -30,12 +30,14 @@ const RegistrationForm = () => {
   const [checkedBoxOne, setCheckedOne] = useState(false);
   const [checkedBoxTwo, setCheckedTwo] = useState(false);
   const [inputFieldsAndOptions, setInputFieldsAndOptions] = useState([
-    { channelName:"" , channelDetails:""},
+    { channelName: "", channelDetails: "" },
   ]);
 
   const deleteEmptyChannels = (inputFieldsAndOptions) => {
     const values = [...inputFieldsAndOptions];
-    return values.filter(filter => filter.channelName !== '' || filter.channelDetails !== '');
+    return values.filter(
+      (filter) => filter.channelName !== "" || filter.channelDetails !== ""
+    );
   };
 
   const handleFormSubmit = (e) => {
@@ -43,7 +45,7 @@ const RegistrationForm = () => {
     const formData = {
       id: values.userID,
       fullName: values.name,
-      email: values.email, 
+      email: values.email,
       birthday: date.toJSON(),
       photo: values.imageSrc,
       representativeHEI: checkedBoxTwo,
@@ -66,11 +68,11 @@ const RegistrationForm = () => {
 
   const handleChangeTextBenefits = useCallback((event) => {
     setTextareaBenefits(event.target.value);
-  },[]);
+  }, []);
 
   const handleChangeTextInterest = useCallback((event) => {
     setTextareaInterest(event.target.value);
-  },[]);
+  }, []);
 
   const handleChangeCheckboxOne = useCallback(() => {
     setCheckedOne(!checkedBoxOne);
@@ -78,7 +80,7 @@ const RegistrationForm = () => {
 
   const handleChangeCheckboxTwo = useCallback(() => {
     setCheckedTwo(!checkedBoxTwo);
-  },[checkedBoxTwo]);
+  }, [checkedBoxTwo]);
 
   return (
     <div className={stylescenter.center_body}>
@@ -119,7 +121,11 @@ const RegistrationForm = () => {
             <button className={stylescenter.backBtn} type="reset" value="back">
               Назад
             </button>
-            <Button variant="contained" type="submit" disabled = {errors !== '' || !values.name || !values.email ||  !date }>
+            <Button
+              variant="contained"
+              type="submit"
+              disabled={errors !== "" || !values.name || !values.email || !date}
+            >
               Зберегти
             </Button>
           </div>

@@ -32,7 +32,7 @@ const Profile = () => {
         getNotes(response.data);
       })
       .catch((error) => console.error(`Error: ${error}`));
-  }, []);
+  });
 
   const mapping = () => {
     console.log(notes);
