@@ -1,99 +1,123 @@
-.header{
-    align-items: center;
-    padding: 24px 112px;
-    width: 100%;
-    height: 80px;
-    background: #FFFFFF;
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
-  }
-.fragmentsText{
-    position: relative;
-    margin-left: 10px;
-    font-family: 'Mulish', sans-serif;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 18px;
-    line-height: 24px;
-    color: #000000;
+.header {
+  padding: 24px 52px;
+  height: 80px;
+  background: #ffffff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 }
-.fragmentsLogo{
-    position: relative;//32px 5% 32px 112px
-    margin: 32px 2% 32px 32px;
-    cursor: pointer;
+.fragmentsText {
+  margin-left: 10px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 24px;
+  color: #000000;
 }
-  
-.headerLabel{
-    position: relative;
-    width: 48px;
-    height: 24px;
-    font-family: 'Mulish', sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 24px;
-    letter-spacing: 0.3px;
-    color: #000000;
-    flex: none;
-    order: 0;
-    flex-grow: 0;
-    margin: 0px 24px;
-    cursor: pointer;
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
 }
-  
-.searchIcon{
-    position: relative;
-    margin: auto 5% auto 10%;
-    cursor: pointer;
+
+.fragmentsLogo {
+  margin: 0px 5% 0px 30px;
+  cursor: pointer;
 }
-  
-.regButtons{
-    
-    position: relative;
-    justify-content: center;
-    padding: 6px 0px;
-    button{
-    display: inline;
-    flex: none;
-    order: 1;
-    flex-grow: 0;
+
+.headerLabel {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.3px;
+  color: #000000;
+  flex: none;
+  order: 0;
+  flex-grow: 0;
+  margin: 0px 24px;
+  cursor: pointer;
+}
+.leftNav {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-end;
+}
+.searchIcon {
+  cursor: pointer;
+  margin: 0 35px;
+}
+
+.regButtons {
+  button {
     margin: 0px 10px;
-    }
+  }
 }
-  
-.logBtn{
-    display: inline-block;
-    padding: 8px 10px;
-    border: 2px solid #000000;
-    border-radius: 999px;
-    font-family: 'Mulish', sans-serif;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 14px;
-    line-height: 16px;
-    text-align: center;
-    letter-spacing: 0.2px;
-    background-color: white;
-    flex: none;
-    order: 3;
-    flex-grow: 0;
-    margin: 0 0;
+
+.logBtn {
+  padding: 8px 10px;
+  border: 2px solid #000000;
+  border-radius: 999px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.2px;
+  background-color: white;
 }
-.signBtn{
-    display: inline-block;
-    padding: 8px 10px;
-    border: 2px solid #000000;
-    color: white;
-    background-color: black;
-    border-radius: 999px;
-    font-family: 'Mulish', sans-serif;
-    font-style: normal;
-    font-weight: 600;
-    font-size: 14px;
-    line-height: 16px;
-    text-align: center;
-    letter-spacing: 0.2px;
+.signBtn {
+  padding: 8px 10px;
+  border: 2px solid #000000;
+  color: white;
+  background-color: black;
+  border-radius: 999px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 16px;
+  text-align: center;
+  letter-spacing: 0.2px;
+}
+.userLogged {
+  display: inline-flex;
+}
+.projects {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 24px;
+  width: 100%; 
+  cursor: pointer;
+}
+.profile {
+  box-sizing: border-box;
+  padding: 2px 0px 0px 12px;
+  width: 180px;
+  height: 40px;
+  gap: 8px;
+  margin-bottom: 8px;
+  border: 2px solid #000000;
+  border-radius: 999px;  
+  cursor: pointer;
     flex: none;
-    order: 3;
-    flex-grow: 0;
-    margin: 0 0;
+  order: 2;
+  flex-grow: 0;
+}
+img.userAvatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  margin-right: 8px;
+}
+.userName {
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 16px;
 }
