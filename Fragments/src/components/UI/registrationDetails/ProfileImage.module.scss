@@ -1,0 +1,163 @@
+.profileImageContainer {
+    position: relative;
+    width: 200px;
+    margin: 45px 0px;
+}
+
+.profileImage {
+    width: 232px;
+    height: 232px;
+    border-radius: 50%;
+}
+
+.profileImageContainer button {
+    position: absolute;
+    bottom: 0%;
+    right: 0%;
+    border: none;
+    background: inherit;
+    width: min-content;
+    height: min-content;
+    padding: 0px;
+}
+
+.editIcon {
+    width: 70px;
+    height: 70px;
+}
+
+.cropper {
+    width: max-content;
+}
+
+.ParrentModal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    box-shadow: 24px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 44px;
+    gap: 52px;
+    position: relative;
+    width: 800px;
+    height: 524px;
+    background: #FFFFFF;
+}
+
+.ParrentModal div:first-of-type {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px;
+    gap: 44px;
+    
+    width: 712px;
+    height: 52px;
+    
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.ParrentModal div:nth-child(1) button{
+    border: none;
+    background: inherit;
+    width: min-content;
+    height: min-content;
+    padding: 0px;
+}
+
+.ParrentModal .buttonsPanel {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 0px;
+    gap: 12px;
+
+    width: 712px;
+    height: 48px;
+
+    flex: none;
+    order: 2;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.ParrentModal .buttonsPanel button{
+    box-sizing: border-box;
+    background: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 16px;
+    gap: 10px;
+
+    width: 151px;
+    height: 48px;
+
+    border: 2px solid #000000;
+    border-radius: 999px;
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.ChildModal{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px;
+    background: #FFFFFF;
+}
+
+.cropper {
+    background: black;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cropperButton {
+    box-sizing: border-box;
+    background: inherit;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 14px 16px;
+    margin: 20px;
+    gap: 10px;
+
+    width: 151px;
+    height: 48px;
+
+    border: 2px solid #000000;
+    border-radius: 999px;
+
+    flex: none;
+    order: 0;
+    align-self: stretch;
+    flex-grow: 0;
+}
+
+.cropperButtons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.uploadButton {
+}

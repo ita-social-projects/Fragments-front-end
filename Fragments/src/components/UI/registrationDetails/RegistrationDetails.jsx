@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./Registration.module.scss";
 import validator from "validator";
 import BirthdayPicker from "./BirthdayPicker";
+import ProfileImage from "./ProfileImage";
 
 const RegistrationDetails = ({ ...props }) => {
   const values = props.values;
@@ -10,6 +11,8 @@ const RegistrationDetails = ({ ...props }) => {
   const setErrors = props.setErrors;
   const date = props.date;
   const setDate = props.setDate;
+  const imageSrc = props.imageSrc;
+  const setImageSrc = props.setImageSrc;
 
   const defaultImageSrc = "/logo192.png";
 
@@ -65,19 +68,9 @@ const RegistrationDetails = ({ ...props }) => {
   };
   return (
     <div>
-      <img
-        src={values.imageSrc}
-        className={"img-fluid " + styles.inputPhoto}
-        id="image-uploader"
-        alt="upload"
-      />
-      <input
-        className={styles.inputFile + " " + applyErrorClass("imageSrc")}
-        type="file"
-        name="photo"
-        accept="image/*"
-        onChange={showPreview}
-        required
+      <ProfileImage
+        value={imageSrc}
+        setValue={setImageSrc}
       />
       <div className={styles.inputText}>
         Ім'я та Прізвище<span className={styles.required}>*</span>
