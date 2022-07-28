@@ -4,10 +4,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import styles from "../UI/signup.module.scss";
 import { GoogleLogin } from "react-google-login";
 import { loginUser } from "../../services/userService";
-
-const clientId =
-  "366436901363-b93c7i7nj1rmvnle6m992dgecfsf4bcd.apps.googleusercontent.com";
-const FacebookAppId = "505126904671302";
+import variables from "../important variables/variables";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -56,7 +53,7 @@ const LoginForm = () => {
             <div className={styles.controlGroup}>
               <div className={styles.controls}>
                 <GoogleLogin
-                  clientId={clientId}
+                  clientId={variables.clientId}
                   render={(renderProps) => (
                     <button
                       onClick={renderProps.onClick}
@@ -85,7 +82,7 @@ const LoginForm = () => {
                         alt="filter applied"
                       />
                     }
-                    appId={FacebookAppId}
+                    appId={variables.FacebookAppId}
                     autoLoad={true}
                     cookie={true}
                     callback={responseFacebook}

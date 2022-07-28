@@ -39,6 +39,11 @@
     letter-spacing: 0.2px;
     color: #909095;
 }
+button.addButton:disabled{
+    background: #C1C1C5;
+    border: none;
+    color: white;
+}
 .selecterOptions{
     margin-bottom: 8px;
     font-family: 'Mulish', sans-serif;

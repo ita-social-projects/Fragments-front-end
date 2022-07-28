@@ -8,7 +8,7 @@ import Benefits from "../UI/benefits&interests/benefits/Benefits";
 import Interests from "../UI/benefits&interests/interests/Interests";
 import Channeldetails from "../UI/channeldetails/Channeldetails";
 import RegistrationDetails from "../UI/registrationDetails/RegistrationDetails";
-import addUser from "./Requests.js";
+import addUser from './Requests.js'
 
 const RegistrationForm = () => {
   const info = useLocation().state;
@@ -51,11 +51,10 @@ const RegistrationForm = () => {
       representativeHEI: checkedBoxTwo,
       representativeAuthority: checkedBoxOne,
       benefits: textareaBenefits,
-      interests: textareaInterests,
-      channelsOfRefferences: deleteEmptyChannels(inputFieldsAndOptions),
-    };
-    console.log(formData);
-    addUser(formData);
+      interests: textareaInterests, 
+      channelsOfRefferences: deleteEmptyChannels(inputFieldsAndOptions)
+    } 
+    addUser(formData)
   };
 
   const handleChangeDetailsAndOptions = useCallback(
