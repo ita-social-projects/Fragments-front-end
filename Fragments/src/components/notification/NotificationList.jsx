@@ -1,54 +1,45 @@
+import axios from "axios";
 import React, { useState } from "react";
 import "../UI/notifications/notificationList.scss"
+import variables from "../important variables/variables.js"
 
-const NotificationList = ({onChoose}) => {
-  const seed = [
-    {id:1,isRead:false,title:'Вітаємо у Спільноті Fragmenty!', paragraph:'Ви можете підтримати платформу, створ...',date:new Date().toLocaleDateString(),body:"Ой нема, нема ні вітру, ні хвилі Із нашої України! Чи там раду радять, як на турка стати, Не чуємо на чужині. Чи там раду радять, як на турка стати, Не чуємо на чужині."},
-    {id:2,isRead:true,title:'dngnng', paragraph:'dfnggngnn',date:new Date().toLocaleDateString(),body:"Ой нема, нема ні вітру, ні хвилі Із нашої України! як на турка стати, Не чуємо на чужині."},
-    {id:3,isRead:false,title:'ALOOO NAROD !', paragraph:'Ви можете підтримати платформу, створ...',date:new Date().toLocaleDateString(),body:" Не чуємо на чужині. Чи там раду радять, як на турка стати, Не чуємо на чужині."},
-    {id:4,isRead:false,title:'HAHAHAHHA!', paragraph:'Ви можете підтримати платформу, створ...',date:new Date().toLocaleDateString(),body:"Ой нема, нема ні вітру, ні хвилі Із нашої України! Чи там раду радять, як на турка стати, Не чуємо на чужині. Чи там раду радять, як на турка стати, Не чуємо на чужині."},
-    {id:5,isRead:false,title:'sdvdsvsdvsd!', paragraph:'Ви можете підтримати платформу, створ...',date:new Date().toLocaleDateString(),body:"Ой нема, нема ні вітру, ні хвилі Із нашої України! Чи там раду радять, як на турка стати, Не чуємо на чужині. Чи там раду радять, як на турка стати, Не чуємо на чужині."},
-    {id:6,isRead:false,title:'Вітаємо у Спільноті Fragmenty!', paragraph:'Ви можете підтримати платформу, створ...',date:new Date().toLocaleDateString(),body:"Ой нема, нема ні вітру, ні хвилі Із нашої України! Чи там раду радять, як на турка стати, Не чуємо на чужині. Чи там раду радять, як на турка стати, Не чуємо на чужині."},
-    {id:7,isRead:true,title:'dngnng', paragraph:'dfnggngnn',date:new Date().toLocaleDateString(),body:"Ой нема, нема ні вітру, ні хвилі Із нашої України! як на турка стати, Не чуємо на чужині."},
-    {id:8,isRead:false,title:'ALOOO NAROD !', paragraph:'Ви можете підтримати платформу, створ...',date:new Date().toLocaleDateString(),body:" Не чуємо на чужині. Чи там раду радять, як на турка стати, Не чуємо на чужині."},
-    {id:9,isRead:false,title:'Вітаємо у Спільноті Fragmenty!', paragraph:'Ви можете підтримати платформу, створ...',date:new Date().toLocaleDateString(),body:"Ой нема, нема ні вітру, ні хвилі Із нашої України! Чи там раду радять, як на турка стати, Не чуємо на чужині. Чи там раду радять, як на турка стати, Не чуємо на чужині."},
-    {id:10,isRead:true,title:'dngnng', paragraph:'dfnggngnn',date:new Date().toLocaleDateString(),body:"Ой нема, нема ні вітру, ні хвилі Із нашої України! як на турка стати, Не чуємо на чужині."},
-    {id:11,isRead:false,title:'ALOOO NAROD !', paragraph:'Ви можете підтримати платформу, створ...',date:new Date().toLocaleDateString(),body:" Не чуємо на чужині. Чи там раду радять, як на турка стати, Не чуємо на чужині."},
-    {id:12,isRead:false,title:'HAHAHAHHA!', paragraph:'Ви можете підтримати платформу, створ...',date:new Date().toLocaleDateString(),body:"Ой нема, нема ні вітру, ні хвилі Із нашої України! Чи там раду радять, як на турка стати, Не чуємо на чужині. Чи там раду радять, як на турка стати, Не чуємо на чужині."}
-  ];
+const NotificationList = ({header,list,onChoose}) => {
 
-  const [notifications,setNotifications] = useState(seed);
   const[previousDiv,setPreviousDiv] = useState(document.getElementsByTagName("div"));
 
   const handleClickNotification = (id) => {
-    const notification = notifications.find(x => x.id === id);
+    const notification = list.find(x => x.notificationId === id);
     onChoose(notification);
-    notification.isRead = true;
+    if(!notification.isRead){
+      notification.isRead = true;
+      axios.post(`${variables.API_URL}Notifications/readMessage`,notification,{headers:header});
+    }
     const div = document.getElementById(id.toString());
     previousDiv.className = "notificationItem";
     div.className = "notificationItemActive";
     setPreviousDiv(div);
   }
-  
+
 
   return (
     <div>
-        {notifications.map((element,index) => (
+        {list.map((element,index) => (
           <div key = {index} className = "top-border">
-            <div id = {element.id.toString()} className = "notificationItem" onClick={() => handleClickNotification(element.id)}>
+            <div id = {element.notificationId.toString()} className = "notificationItem" onClick={() => handleClickNotification(element.notificationId)}>
               <p className="title">
                 {element.isRead ? <></>:<span className="dot"></span>}
-                {element.title}
+                {element.theme}
               </p>
               <p className="paragraph">
-                {element.paragraph}
+                {element.theme}
               </p>
               <p className="date">
-                {element.date}
+                {new Date(element.date).toLocaleDateString()}
               </p>
             </div>
           </div>
-        ))}
+        ))} 
+
     </div>
   );
 };

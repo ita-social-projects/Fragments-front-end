@@ -2,25 +2,47 @@ import React, { useState } from "react";
 import "../UI/notifications/notificationPage.scss"
 import NotificationList from "./NotificationList";
 import FilterDropdown from "./FilterDropdown";
+import axios from "axios";
+import variables from "../important variables/variables.js"
+import { useEffect } from "react";
 
 const NotificationPage = () => {
+  const [notificationsList,setNotificationsList] = useState([{
+    notificationId:0,isRead:false,theme:"",date:"",body:""}])
+
   const [choosenNotification,setChoosenNotification] = useState({
-    id:0,isRead:false,title:"", paragraph:"",date:"",body:""});
+    notificationId:0,isRead:false,theme:"",date:"",body:""});
 
   const [isAll, setIsAll] = useState(true);
+
   const [isNewest,setIsNewest] = useState(true);
 
   const getSelectedFilter = () =>{
+    setChoosenNotification({notificationId:0,isRead:false,theme:"",date:"",body:""})
     document.getElementsByName("sizeBy").forEach(radio =>{
       if(radio.checked && radio.value === "all"){
         setIsAll(true);
+        console.log(true)
       }
-      else{
+      else if(radio.checked && radio.value === "unread"){
         setIsAll(false);
+        console.log(false)
       }
     })
   }
+  const options = {
+    headers: { Authorization: `bearer ${localStorage.getItem("token")}`},
+    params: {
+      sortingBy:isNewest,
+      pageIndex:1,
+      typeOfRead:isAll
+    }
+  };
   
+  useEffect(() => {
+    axios.get(`${variables.API_URL}Notifications/getNotifications`,options).then((response) => setNotificationsList(response.data))
+  },[notificationsList])
+
   return (
     <div className="wrapper">
         <div className="baner">
@@ -35,12 +57,12 @@ const NotificationPage = () => {
             <FilterDropdown isNewest={setIsNewest}/>
           </div>
           <div className="notificationsList">
-            <NotificationList onChoose={setChoosenNotification}/>
+            <NotificationList header = {options.headers} list={notificationsList} onChoose={setChoosenNotification}/>
           </div>
         </div>
         <div className="notificationDetails">
           <p className="notificationTitle">
-            {choosenNotification.title}
+            {choosenNotification.theme}
           </p>
           <p className="notificationDate">
             {choosenNotification.date}
