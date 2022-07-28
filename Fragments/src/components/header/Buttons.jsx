@@ -9,9 +9,10 @@ const Buttons = ({ ...props }) => {
   const navigate = useNavigate();
   const fetchSignIn = () => navigate('/Sign-up', {state:state});
 
+
   return (
     <>
-      <span className={props.className.searchIcon}>
+      <span className={props.className.searchIcon} >
         <img src="/search.svg" alt="search" />
       </span>
       <span className={props.className.regButtons}>
