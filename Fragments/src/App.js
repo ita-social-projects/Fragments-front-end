@@ -10,14 +10,14 @@ function App() {
   const [user, setUser] = useState();
 
   useEffect(()=>{
-    const token = window.localStorage.getItem('token');
+    const token = window.localStorage.getItem('access_token');
     if(!user)
       getUser(token, setUser)
   },[user]);
   
   return (
     <Router>
-      <Header user = {user}/>
+      <Header user = {user} exact />
       <Routes>
         <Route path="/Sign-up" element = {<SignUp/>} exact/>
         <Route path="/Registration" element={<RegistrationForm />} />
