@@ -23,7 +23,7 @@ function App() {
         <Route path="/Sign-up" element = {<SignUpForm/>}/>
         <Route path="/Registration" element={<RegistrationForm />} />
         <Route path="/Notifications" element = {<NotificationPage/>}/>
-        <Route path="/api/Users" element={<Profile />} />
+        <Route path="/Users" element={<Profile />} />
         <Route path="/Admin" element={<AdminPage />} />
       </Routes>
     </Router>

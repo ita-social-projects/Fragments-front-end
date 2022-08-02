@@ -4,7 +4,7 @@ import stylescenter from "./Benefits.module.css";
 
 const Benefits = ({ ...props }) => {
   function charCount(startFrom, charend) {
-    var len = document.getElementById(startFrom).value.length;
+    let len = document.getElementById(startFrom).value.length;
     document.getElementById(charend).innerHTML = len;
   }
 

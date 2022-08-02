@@ -1,16 +1,20 @@
-
-@mixin hideInput { width: 0;}
+@mixin hideInput {
+  width: 0;
+}
 @mixin breakpoint($point) {
   @if $point == 1100 {
-    @media (max-width: 1100px) { @content ; }
-  }
-  @else if $point == 800 {
-    @media (max-width: 800px) { @content ; }
+    @media (max-width: 1100px) {
+      @content;
+    }
+  } @else if $point == 800 {
+    @media (max-width: 800px) {
+      @content;
+    }
   }
 }
 
 .toggle {
-  margin:0px 40px 0px 35px;
+  margin: 0px 40px 0px 35px;
   width: 372px;
   height: 50px;
   box-sizing: border-box;
@@ -20,64 +24,67 @@
   flex-flow: row nowrap;
   justify-content: flex-start;
   align-items: stretch;
-  input {@include hideInput;}
+  input {
+    @include hideInput;
+  }
   input + label {
     margin-top: 10px;
     width: 122px;
     height: 36px;
     padding: 6px 0px;
     box-sizing: border-box;
-    color: #65656A;
+    color: #65656a;
     position: relative;
     display: inline-block;
-    background-color: #F8F8F9;
+    background-color: #f8f8f9;
     font-size: 15px;
     font-weight: 600;
     text-align: center;
-    transition:   border-color .15s ease-out,
-                  color .25s ease-out,
-                  background-color .15s ease-out,
-                  box-shadow .15s ease-out;
-    
-    
-  &:first-of-type {border-radius: 999px; }
-  &:last-of-type {border-radius: 999px; }
+    transition: border-color 0.15s ease-out, color 0.25s ease-out,
+      background-color 0.15s ease-out, box-shadow 0.15s ease-out;
+
+    &:first-of-type {
+      border-radius: 999px;
+    }
+    &:last-of-type {
+      border-radius: 999px;
+    }
   }
   input:checked + label {
     background-color: #000000;
-    color: #FFF;
+    color: #fff;
     border-color: #000000;
     z-index: 1;
   }
 
   @include breakpoint(800) {
     input + label {
-      padding: .75rem .25rem;
+      padding: 0.75rem 0.25rem;
       flex: 0 0 50%;
-      display: flex; 
-      justify-content: center; 
+      display: flex;
+      justify-content: center;
       align-items: center;
     }
   }
 }
 
-.banerText{
-  font-family: 'Montserrat Alternates';
+.banerText {
+  font-family: "Montserrat Alternates", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 28px;
   line-height: 36px;
 
-  color: #FFFFFF;
+  color: #ffffff;
 }
-.notificationDetails{
+.notificationDetails {
   height: calc(100vh - 214px);
-  margin:44px 0px 0px 424px;
+  margin: 44px 0px 0px 424px;
 }
-.wrapper{
+.wrapper {
   height: calc(100vh - 80px);
 }
-.baner{
+.baner {
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -89,52 +96,52 @@
 
   background: #000000;
 }
-.sidebar{
+.sidebar {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 40px 0px;
   gap: 40px;
-  height:100vh;
+  height: 100vh;
   width: 372px;
   position: fixed;
-  background: #FFFFFF;
+  background: #ffffff;
 
   box-shadow: 0px 4px 8px rgba(65, 64, 69, 0.2);
 }
-.notificationsList{
+.notificationsList {
   height: calc(100vh - 295px);
   overflow-y: scroll;
-  top:0;
+  top: 0;
   bottom: 0;
 }
-.notificationTitle{
+.notificationTitle {
   width: 700px;
   height: 32px;
-  font-family: 'Montserrat Alternates';
+  font-family: "Montserrat Alternates", sans-serif;
   font-weight: 500;
   font-size: 24px;
 }
-.notificationDate{
+.notificationDate {
   width: 700px;
   height: 24px;
-  font-family: 'Mulish';
+  font-family: "Mulish", sans-serif;
   font-weight: 500;
   font-size: 18px;
   letter-spacing: 0.3px;
   color: #414045;
 }
-.notificationBody{
+.notificationBody {
   width: 700px;
   height: 84px;
-  font-family: 'Mulish';
+  font-family: "Mulish", sans-serif;
   font-weight: 400;
   font-size: 18px;
 }
-::-webkit-scrollbar{
-  width: 4px ;
+::-webkit-scrollbar {
+  width: 4px;
 }
-::-webkit-scrollbar-thumb{
-  background: #C1C1C5;;
+::-webkit-scrollbar-thumb {
+  background: #c1c1c5;
   border-radius: 10px;
 }

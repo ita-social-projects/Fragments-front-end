@@ -1,10 +1,6 @@
 import React from "react";
 import styles from "./UpperBorderInformation.module.scss";
 
-// let newArr = props.channelsOfRefferences.map((item, i) => {
-//   return i++;
-// });
-
 const UpperBorderInformation = ({ ...props }) => {
   return (
     <div className={styles.upperBorderBorder}>
@@ -31,7 +27,7 @@ const UpperBorderInformation = ({ ...props }) => {
 
       <span className={styles.detailsTextBox}>
         {props.channelsOfRefferences.map((item, i) => {
-          const list = (
+         return (
               <div className={styles.channelAndTextBox} key={i}>
                 <div className={styles.channelBox} >
                   <span className={styles.simpleText}>Канал звязку</span>
@@ -45,7 +41,6 @@ const UpperBorderInformation = ({ ...props }) => {
                 </div>
               </div>
           );
-          return list;
         })}
       </span>
     </div>

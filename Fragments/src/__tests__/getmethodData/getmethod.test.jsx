@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import axios from "axios";
-import getDataFromApi from "../../components/getmethod/getmethod";
+import getDataFromApi from "../../components/getmethod/getDataFromApi";
 jest.mock("axios");
 jest.mock("../../components/getmethod/getmethod");
 
@@ -15,7 +15,7 @@ describe("Get methdod gets info from api:", () => {
     const personid = 2;
     const getNotes = jest.fn();
     axios.get.mockResolvedValueOnce(response);
-    const result = await getDataFromApi({getNotes,personid});
+    const result = getDataFromApi({getNotes,personid});
     expect(result).toEqual(response);
     jest.unmock("../../components/getmethod/getmethod");
   });
@@ -28,7 +28,7 @@ describe("Get methdod gets info from api:", () => {
         };
       });
       const response = { id: 2, fullName: "Vitaliy Testing" };
-      return import("../.././components/getmethod/getmethod").then((moduleName) => {
+      return import("../../components/getmethod/getDataFromApi").then((moduleName) => {
         expect(moduleName.default).toEqual(response);
       });
     });

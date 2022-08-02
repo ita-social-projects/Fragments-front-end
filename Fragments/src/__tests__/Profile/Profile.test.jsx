@@ -1,5 +1,4 @@
 import "@testing-library/jest-dom";
-import axios from "axios";
 jest.mock("axios");
 
 describe("Get methdod gets info from api:", () => {

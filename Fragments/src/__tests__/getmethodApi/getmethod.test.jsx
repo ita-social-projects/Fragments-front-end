@@ -1,6 +1,6 @@
 import "@testing-library/jest-dom";
 import axios from "axios";
-import getDataFromApi from "../../components/getmethod/getmethod";
+import getDataFromApi from "../../components/getmethod/getDataFromApi";
 jest.mock("axios");
 
 describe("Get methdod gets info from api:", () => {
@@ -11,7 +11,7 @@ describe("Get methdod gets info from api:", () => {
         const personid = 2;
         const getNotes = jest.fn();
         axios.get.mockResolvedValueOnce(users);
-        await getDataFromApi({ getNotes, personid });
+        getDataFromApi({ getNotes, personid });
     
         // then
         expect(axios.get).toHaveBeenCalledWith(`${BASE_URL}Users/${personid}`);

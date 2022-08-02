@@ -4,7 +4,7 @@ import stylescenter from "./Interests.module.css";
 
 const Interests = ({ ...props }) => {
   function charCount(startFrom, charend) {
-    var len = document.getElementById(startFrom).value.length;
+    let len = document.getElementById(startFrom).value.length;
     document.getElementById(charend).innerHTML = len;
   }
   return (
