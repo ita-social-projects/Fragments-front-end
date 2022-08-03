@@ -8,7 +8,7 @@ import Benefits from "../UI/benefits&interests/benefits/Benefits";
 import Interests from "../UI/benefits&interests/interests/Interests";
 import Channeldetails from "../UI/channeldetails/Channeldetails";
 import RegistrationDetails from "../UI/registrationDetails/RegistrationDetails";
-import addUser from "./addUser.js";
+import { addUser } from "../../services/userService";
 
 const RegistrationForm = () => {
   const info = useLocation().state;
