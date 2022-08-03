@@ -6,7 +6,7 @@ import { GoogleLogin } from "react-google-login";
 import { loginUser } from "../../services/userService";
 import variables from "../important variables/variables";
 
-const LoginForm = () => {
+const SignUpForm = () => {
   const navigate = useNavigate();
   const action = useLocation().state;
   const state = {
@@ -40,7 +40,7 @@ const LoginForm = () => {
       navigate("/", { state: null });
     } else navigate("/Registration", { state: state });
   };
-  const responseFailureGoogle = (response) => {
+  const responseFailureGoogle = () => {
     console.log("Login is failed");
   };
   return (
@@ -119,4 +119,4 @@ const LoginForm = () => {
   );
 };
 
-export default LoginForm;
+export default SignUpForm;

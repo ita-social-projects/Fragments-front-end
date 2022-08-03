@@ -4,16 +4,14 @@ import stylescenter from "./Benefits.module.css";
 
 const Benefits = ({ ...props }) => {
   function charCount(startFrom, charend) {
-    var len = document.getElementById(startFrom).value.length;
+    const len = document.getElementById(startFrom).value.length;
     document.getElementById(charend).innerHTML = len;
   }
 
   return (
     <div name="Benefits" className={stylescenter.informationAboutUser}>
       <div className={stylescenter.hintItems}>
-        <p className={stylescenter.benefitsText}>
-        Чим можу бути корисним
-        </p>
+        <p className={stylescenter.benefitsText}>Чим можу бути корисним</p>
         <span
           className={stylescenter.hintButton}
           data-tip="Введіть інформацію про себе"

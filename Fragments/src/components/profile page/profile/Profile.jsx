@@ -5,7 +5,7 @@ import LeftSide from "../left side information/LeftSide";
 import UpperBorderInformation from "../upper border information/UpperBorderInformation";
 import DownBorder from "../down border infortmation/DownBorder";
 import { useSearchParams } from "react-router-dom";
-import getDataFromApi from "../../getmethod/getmethod";
+import getDataFromApi from "../../getmethod/getDataFromApi";
 
 const Profile = () => {
   const [notes, getNotes] = useState({
@@ -20,7 +20,7 @@ const Profile = () => {
     interests: "",
     channelsOfRefferences: [{ optionSelected: "", details: "" }],
   });
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const personid = searchParams.get("id");
 
   useEffect(() => {

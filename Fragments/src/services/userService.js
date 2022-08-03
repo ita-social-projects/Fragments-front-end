@@ -20,4 +20,11 @@ const getUser = (token, setUser) => {
       .catch((err) => console.log(err));
   }
 };
-export { getUser, loginUser };
+const addUser = (formData) => {
+  console.log(formData)
+  if (formData.id === 0){
+    axios.post(`${variables.API_URL}Users/register`, formData)
+          .catch(err => console.log(err))
+        }
+}
+export { getUser, loginUser, addUser };

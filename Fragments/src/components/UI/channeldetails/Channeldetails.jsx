@@ -94,7 +94,7 @@ const Channeldetails = ({ ...props }) => {
             type="button"
             className={stylescenter.addButton}
             onClick={() => handleAddDetails()}
-            disabled={checkEmptyChannels(inputFieldsAndOptions)}
+            disabled={checkEmptyChannels}
           >
             <img src="plus.svg" alt="plus logo" />
             <span className={stylescenter.addButtonText}>
