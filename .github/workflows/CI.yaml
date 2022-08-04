@@ -1,0 +1,123 @@
+name: CI
+on:
+  push:
+    branches:
+      - master
+      - 24-add-ci-for-fragments-front-end #test branch
+  pull_request:
+      - master
+env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+jobs:
+  build_and_test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone Back-End repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: create-credentials-manager
+        id: create-credentials-manager
+        uses: jsdaniell/create-json@1.1.2
+        with:
+          name: "credentials.json"
+          json: ${{ secrets.CREDENTIALS }}jsdaniell/create-json@v1.1.2
+          dir: "./Fragments/credentials"
+
+      - name: Install npm dependencies
+        run: |
+          cd Fragments
+          npm install
+
+      - name: Run tests
+        run: |
+          cd Fragments
+          npm test -- --coverage
+
+################################
+  # sonarcloud:
+  #   name: SonarCloud
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v2
+  #       with:
+  #         fetch-depth: 0
+  #     - name: SonarCloud Scan
+  #       uses: SonarSource/sonarcloud-github-action@master
+
+
+
+# jobs:
+#   install-and-test:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - uses: actions/checkout@v2
+
+#       - name: create-credentials-manager
+#         id: create-credentials-manager
+#         uses: jsdaniell/create-json@1.1.2
+#         with:
+#           name: "credentials.json"
+#           json: ${{ secrets.CREDENTIALS }}
+#           dir: "./Car/credentials"
+
+#       - name: Install npm dependencies
+
+#         run: |
+#           cd Car
+#           npm install
+#       - name: Run tests
+#         run: |
+#           cd Car
+#           npm test -- --coverage
+
+
+
+#   sonarcloud:
+#     runs-on: ubuntu-latest
+
+#     needs: [install-and-test]
+
+#     steps:
+#       - uses: actions/checkout@v2
+
+#       - name: create-credentials-manager
+#         id: create-credentials-manager
+#         uses: jsdaniell/create-json@1.1.2
+#         with:
+#           name: "credentials.json"
+#           json: "${{ secrets.CREDENTIALS }}"
+#           dir: "./Car/credentials"
+
+#       - name: Install npm dependencies
+
+#         run: |
+#           cd Car
+#           npm install
+#            npm test -- --coverage
+#       - name: SonarCloudScan
+#         uses: sonarsource/sonarcloud-github-action@master
+
+#         env:
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+#           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+
+#         with:
+#           args: >
+#             -Dsonar.organization=ita-social-projects
+#             -Dsonar.projectKey=ita-social-projects_Car-Front-End
+#             -Dsonar.javascript.lcov.reportPaths=Car/coverage/lcov.info
+#             -Dsonar.sources=./Car
+#             -Dsonar.exclusions=**/coverage/**,**/__tests__/**,**/__mocks__/**,**/ios/**,**/android/**,**/*config.js,**/styles/**,**/constants/**,**/data/**,**/ChatStyles/**,**/*Style.tsx,**/*-test.tsx
+#             -Dsonar.verbose=false
+#             -Dsonar.coverage.exclusions=**/__tests__/**,**/__mocks__/**,**/coverage/**,**/*config.js,**/styles/**,**/constants/**,**/data/**,**/ChatStyles/**,**/ios/**,**/android/**,**/*Style.tsx,**/*-test.tsx
+#             -Dsonar.c.file.suffixes=-
+#             -Dsonar.cpp.file.suffixes=-
+#             -Dsonar.objc.file.suffixes=-
+#             -Dsonar.java.file.suffixes=-
