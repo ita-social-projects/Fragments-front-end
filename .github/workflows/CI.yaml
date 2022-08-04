@@ -5,6 +5,7 @@ on:
       - master
       - 24-add-ci-for-fragments-front-end #test branch
   pull_request:
+    branches:
       - master
 env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
