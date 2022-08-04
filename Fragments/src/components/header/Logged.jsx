@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { hub } from "../../services/notificationService";
 
 const Logged = ({ ...props }) => {
@@ -8,6 +7,7 @@ const Logged = ({ ...props }) => {
     setNotify(message)
     console.log(message);
   },[]);
+  
   return (
     <div className={props.className.userLogged}>
       <span className={props.className.projects}>Мої проекти</span>

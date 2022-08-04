@@ -11,7 +11,7 @@ const Buttons = ({ ...props }) => {
 
   return (
     <>
-      <span className={props.className.searchIcon}>
+      <span className={props.className.searchIcon} >
         <img src="/search.svg" alt="search" />
       </span>
       <span className={props.className.regButtons}>

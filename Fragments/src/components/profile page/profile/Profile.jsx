@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import styles from "./Profile.module.scss";
 import { Container, Col, Row } from "react-bootstrap";
 import LeftSide from "../left side information/LeftSide";
-import axios from "axios";
 import UpperBorderInformation from "../upper border information/UpperBorderInformation";
 import DownBorder from "../down border infortmation/DownBorder";
 import { useSearchParams } from "react-router-dom";
+import getDataFromApi from "../../getmethod/getDataFromApi";
 
 const Profile = () => {
   const [notes, getNotes] = useState({
@@ -20,19 +20,12 @@ const Profile = () => {
     interests: "",
     channelsOfRefferences: [{ optionSelected: "", details: "" }],
   });
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const personid = searchParams.get("id");
 
-  const url = "https://localhost:44361/api/Users";
-
   useEffect(() => {
-    axios
-      .get(`${url}/${personid}`)
-      .then((response) => {
-        getNotes(response.data);
-      })
-      .catch((error) => console.error(`Error: ${error}`));
-  });
+      getDataFromApi({getNotes, personid});
+  }, [personid]);
 
   const mapping = () => {
     console.log(notes);

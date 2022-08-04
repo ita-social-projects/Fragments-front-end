@@ -8,7 +8,7 @@ import Benefits from "../UI/benefits&interests/benefits/Benefits";
 import Interests from "../UI/benefits&interests/interests/Interests";
 import Channeldetails from "../UI/channeldetails/Channeldetails";
 import RegistrationDetails from "../UI/registrationDetails/RegistrationDetails";
-import addUser from "./Requests.js";
+import { addUser } from "../../services/userService";
 
 const RegistrationForm = () => {
   const info = useLocation().state;
@@ -33,9 +33,9 @@ const RegistrationForm = () => {
     { channelName: "", channelDetails: "" },
   ]);
 
-  const deleteEmptyChannels = (inputFieldsAndOptions) => {
-    const values = [...inputFieldsAndOptions];
-    return values.filter(
+  const deleteEmptyChannels = (changedOptions) => {
+    const channels = [...changedOptions];
+    return channels.filter(
       (filter) => filter.channelName !== "" || filter.channelDetails !== ""
     );
   };
@@ -54,7 +54,6 @@ const RegistrationForm = () => {
       interests: textareaInterests,
       channelsOfRefferences: deleteEmptyChannels(inputFieldsAndOptions),
     };
-    console.log(formData);
     addUser(formData);
   };
 
