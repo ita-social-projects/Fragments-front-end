@@ -16,23 +16,23 @@ const getUser = (token, setUser) => {
       headers: { Authorization: `bearer ${token}` },
     };
     axios
-      .get(`${variables.API_URL}Users/get-me` , options)
+      .get(`${variables.API_URL}Users/get-me`, options)
       .then((response) => {
         setUser(response.data);
         createHubConnection();
       })
       .catch((err) => {
-        if(err.response.status === 401)
-        localStorage.removeItem('access_token')
-      }
-      );
+        if (err.response.status === 401)
+          localStorage.removeItem("access_token");
+      });
   }
 };
 const addUser = (formData) => {
-  console.log(formData)
-  if (formData.id === 0){
-    axios.post(`${variables.API_URL}Users/register`, formData)
-          .catch(err => console.log(err))
-        }
-}
+  console.log(formData);
+  if (formData.id === 0) {
+    axios
+      .post(`${variables.API_URL}Users/register`, formData)
+      .catch((err) => console.log(err));
+  }
+};
 export { getUser, loginUser, addUser };
