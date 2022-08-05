@@ -49,7 +49,9 @@ jobs:
           npm -g install eslint-plugin-import eslint-config-airbnb-base
 
       - name: Run eslint
-        run: npx eslint --color src/App.js
+        uses: stefanoeb/eslint-action@1.0.2
+        with:
+          files: src/
 
 ################################
   # sonarcloud:
