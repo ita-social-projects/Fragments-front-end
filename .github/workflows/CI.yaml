@@ -44,7 +44,7 @@ jobs:
           sudo apt-get install -y nodejs
 
       - name: version nodejs
-        run: nodejs --version
+        run: node --version
 
 
 ################################
