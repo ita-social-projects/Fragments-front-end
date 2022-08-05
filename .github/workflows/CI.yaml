@@ -14,7 +14,6 @@ env:
 jobs:
   build_and_test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Clone Front-End repo
         uses: actions/checkout@v3
@@ -35,6 +34,16 @@ jobs:
         run: |
           cd Fragments
           npm test -- --coverage
+
+  eslint:
+    runs-on: ubuntu-latest
+    steps:
+      # - name: install Node.js
+      #   run: |
+      #     curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+      #     sudo apt-get install -y nodejs
+        - name: TEST CURL
+          run: curl --version
 
 
 ################################

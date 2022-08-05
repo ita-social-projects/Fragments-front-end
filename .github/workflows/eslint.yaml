@@ -1,29 +1,29 @@
-name: ESLint
-on:
-  push:
-    branches:
-      - master
-      - 24-add-ci-for-fragments-front-end #test branch
-  pull_request:
-    branches:
-      - master
-env:
-    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+# name: ESLint
+# on:
+#   push:
+#     branches:
+#       - master
+#       - 24-add-ci-for-fragments-front-end #test branch
+#   pull_request:
+#     branches:
+#       - master
+# env:
+#     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-jobs:
-  eslint:
-      runs-on: ubuntu-latest
-      steps:
-        - name: Clone Front-End repo
-          uses: actions/checkout@v3
+# jobs:
+#   eslint:
+#       runs-on: ubuntu-latest
+#       steps:
+#         - name: Clone Front-End repo
+#           uses: actions/checkout@v3
 
-        - name: Install modules
-          run: npm install eslint-plugin-react-hooks --save --dev
+#         - name: Install modules
+#           run: npm install eslint-plugin-react-hooks --save --dev
 
-        - name: Init
-          run: npm install -g eslint
+#         - name: Init
+#           run: npm install -g eslint
 
-        - name: Run eslint
-          uses: stefanoeb/eslint-action@1.0.2
-          with:
-            files: Fragments/src/
+#         - name: Run eslint
+#           uses: stefanoeb/eslint-action@1.0.2
+#           with:
+#             files: Fragments/src/
