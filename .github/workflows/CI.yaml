@@ -22,18 +22,15 @@ jobs:
           fetch-depth: 0
 
       - name: Install npm dependencies
-        run: npm install
+        run: |
+          cd Fragments
+          npm install
 
       - name: Build npm packages
-        run: pwd
-        # run: |
-        #   cd Fragments
-        #   npm rebuild
+        run: npm run build
 
-      # - name: Run npm tests
-      #   run: |
-      #     cd Fragments
-      #     npm test -- --coverage
+      - name: Run npm tests
+        run: npm test -- --coverage
 
 ################################
   # sonarcloud:
