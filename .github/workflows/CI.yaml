@@ -46,15 +46,13 @@ jobs:
       - name: Install eslint
         run: |
           cd Fragments
-          npm -g install eslint-plugin-import eslint-config-airbnb-base
+          yarn init
 
       - name: Config eslint
-        run: eslint --init
+        run: yarn
 
       - name: Run eslint
-        uses: stefanoeb/eslint-action@1.0.2
-        with:
-          files: src/
+        run: eslint src/. --ext .js,.jsx,.ts,.tsx
 
 ################################
   # sonarcloud:
