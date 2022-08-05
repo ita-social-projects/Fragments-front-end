@@ -49,7 +49,9 @@ jobs:
           yarn
 
       - name: Run eslint
-        run: yarn run eslint . --ext .js,.jsx
+        run: |
+          cd Fragments
+          yarn run eslint . --ext .js,.jsx
 
 ################################
   # sonarcloud:
