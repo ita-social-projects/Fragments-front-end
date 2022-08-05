@@ -44,10 +44,21 @@ jobs:
       - name: Clone Front-End repo
         uses: actions/checkout@v3
 
-      - name: ESLint validation
-        uses: stefanoeb/eslint-action@1.0.2
-        with:
-          files: Fragments/
+      - name: Install modules
+        run: |
+          cd Fragments
+          yarn install
+          npm install
+
+      - name: Eneble modules
+        run: |
+          cd Fragments
+          yarn
+
+      - name: Run ESLint
+        run: |
+          cd Fragments
+          eslint . --ext .js,.jsx,.ts,.tsx
 
 
 ################################
