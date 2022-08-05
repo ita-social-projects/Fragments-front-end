@@ -21,20 +21,17 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: create-credentials-manager
-        id: create-credentials-manager
-        uses: jsdaniell/create-json@1.1.2
-        with:
-          name: "credentials.json"
-          json: ${{ secrets.CREDENTIALS }}jsdaniell/create-json@v1.1.2
-          dir: "./Fragments/credentials"
-
       - name: Install npm dependencies
         run: |
           cd Fragments
           npm install
 
-      - name: Run tests
+      - name: Build npm packages
+        run: |
+          cd Fragments
+          npm build
+
+      - name: Run npm tests
         run: |
           cd Fragments
           npm test -- --coverage
