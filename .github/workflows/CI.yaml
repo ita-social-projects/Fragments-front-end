@@ -62,8 +62,7 @@ jobs:
       - name: Run eslint
         run: |
           cd Fragments
-          pwd
-          npx eslint --color src/**
+          npx eslint --color "src/"
 
 
 ################################
