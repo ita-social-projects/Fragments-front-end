@@ -34,7 +34,7 @@ jobs:
       - name: Run npm tests
         run: |
           cd Fragments
-          npm test -- --coverage
+          npm test
 
 ################################
   # sonarcloud:
