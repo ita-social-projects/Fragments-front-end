@@ -23,7 +23,6 @@ jobs:
             npm install
 
         - name: Run eslint
-          run: cd Fragments
           uses: stefanoeb/eslint-action@1.0.2
           with:
             files: src/
