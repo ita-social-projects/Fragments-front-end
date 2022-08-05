@@ -42,8 +42,10 @@ jobs:
 
     steps:
       - name: Clone Front-End repo
-        - uses: actions/checkout@v3
-      - uses: stefanoeb/eslint-action@1.0.2
+        uses: actions/checkout@v3
+
+      - name: ESLint validation
+        uses: stefanoeb/eslint-action@1.0.2
         with:
           files: Fragments/
 
