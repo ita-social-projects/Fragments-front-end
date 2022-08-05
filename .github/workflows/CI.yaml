@@ -57,7 +57,7 @@ jobs:
       - name: Run ESLint
         run: |
           cd Fragments
-          npx eslint src/**
+          npx eslint src/__tests__
 
 
 ################################
