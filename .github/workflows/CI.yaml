@@ -52,12 +52,17 @@ jobs:
       - name: Install eslint
         run: |
           cd Fragments
-          npm i eslint --global
+          npm install eslint --global
 
-      - name: Run ESLint
+      - name: Init module
         run: |
           cd Fragments
-          npm init @eslint/config
+          npm init
+
+      - name: Run eslint
+        run: |
+          cd Fragments
+          npx eslint --color src/**
 
 
 ################################
