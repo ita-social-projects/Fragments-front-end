@@ -36,34 +36,6 @@ jobs:
           cd Fragments
           npm test -- --coverage
 
-  eslint:
-    # needs: [build_and_test]
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Clone Front-End repo
-        uses: actions/checkout@v3
-
-      - name: Install modules
-        run: |
-          cd Fragments
-          npm install
-
-      - name: Install eslint
-        run: |
-          cd Fragments
-          npm install eslint --global
-
-      # - name: Init module
-      #   run: |
-      #     cd Fragments
-      #     npm init
-
-      - name: Run eslint
-        run: |
-          cd Fragments
-          npx eslint --color "src/"
-
 
 ################################
   # sonarcloud:

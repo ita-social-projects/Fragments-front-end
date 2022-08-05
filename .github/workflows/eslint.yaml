@@ -1,0 +1,20 @@
+name: ESLint
+on:
+  push:
+    branches:
+      - master
+      - 24-add-ci-for-fragments-front-end #test branch
+  pull_request:
+    branches:
+      - master
+env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  eslint:
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v1
+        - uses: stefanoeb/eslint-action@1.0.2
+          with:
+            files: src/
