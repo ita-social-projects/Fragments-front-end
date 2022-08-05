@@ -51,11 +51,17 @@ jobs:
 
       - name: Install eslint
         run: |
+          pwd
           ls -la
-          npm init @eslint/config
+          cd Fragments
+          pwd
+          npm init
 
       - name: Run eslint
-        run: npx eslint Fragments/src/**
+        run: |
+          pwd
+          ls -la
+          npx eslint src/**
 
 ################################
   # sonarcloud:
