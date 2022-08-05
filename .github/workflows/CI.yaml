@@ -54,10 +54,10 @@ jobs:
           cd Fragments
           npm install eslint --global
 
-      - name: Init module
-        run: |
-          cd Fragments
-          npm init
+      # - name: Init module
+      #   run: |
+      #     cd Fragments
+      #     npm init
 
       - name: Run eslint
         run: |
