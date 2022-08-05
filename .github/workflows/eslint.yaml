@@ -14,7 +14,13 @@ jobs:
   eslint:
       runs-on: ubuntu-latest
       steps:
-        - uses: actions/checkout@v1
-        - uses: stefanoeb/eslint-action@1.0.2
+        - name: Clone Front-End repo
+          uses: actions/checkout@v3
+
+        - name: Install modules
+          run: npm install --global
+
+        - name: Run eslint
+          uses: stefanoeb/eslint-action@1.0.2
           with:
-            files: src/
+            files: Fragments/src/
