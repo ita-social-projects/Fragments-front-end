@@ -42,15 +42,10 @@ jobs:
 
     steps:
       - name: Clone Front-End repo
-        uses: actions/checkout@v3
+        - uses: actions/checkout@v3
+      - uses: stefanoeb/eslint-action@1.0.2
         with:
-          fetch-depth: 0
-
-      - name: Install yarn module
-        run: yarn
-
-      - name: Run ESLint
-        run: eslint . --ext .js,.jsx,.ts,.tsx
+          files: Fragments/
 
 
 ################################
