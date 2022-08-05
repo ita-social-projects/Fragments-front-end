@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clone Back-End repo
+      - name: Clone Front-End repo
         uses: actions/checkout@v3
         with:
           fetch-depth: 0
@@ -36,7 +36,26 @@ jobs:
           cd Fragments
           npm test -- --coverage
 
-################################
+  eslint:
+    # needs: [build_and_test]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone Front-End repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Install yarn module
+        run: yarn
+
+      - name: Run ESLint
+        run: |
+          cd Fragments
+          eslint .
+
+
+################################    --ext .js,.jsx,.ts,.tsx
   # sonarcloud:
   #   name: SonarCloud
   #   runs-on: ubuntu-latest
