@@ -57,7 +57,7 @@ jobs:
       - name: Run ESLint
         run: |
           cd Fragments
-          ./node_modules/.bin/eslint --init
+          npm init @eslint/config
 
 
 ################################
