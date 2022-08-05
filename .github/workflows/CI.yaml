@@ -52,7 +52,7 @@ jobs:
       - name: Install eslint
       run: |
         cd Fragments
-        npm i eslint
+        npm init eslint
 
       - name: Run ESLint
         run: |
