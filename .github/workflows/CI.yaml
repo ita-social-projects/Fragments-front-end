@@ -46,10 +46,7 @@ jobs:
       - name: Install eslint
         run: |
           cd Fragments
-          yarn init
-
-      - name: Config eslint
-        run: yarn
+          yarn
 
       - name: Run eslint
         run: eslint src/. --ext .js,.jsx,.ts,.tsx
