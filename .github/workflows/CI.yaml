@@ -50,12 +50,10 @@ jobs:
         run: yarn
 
       - name: Run ESLint
-        run: |
-          cd Fragments
-          eslint .
+        run: eslint . --ext .js,.jsx,.ts,.tsx
 
 
-################################    --ext .js,.jsx,.ts,.tsx
+################################
   # sonarcloud:
   #   name: SonarCloud
   #   runs-on: ubuntu-latest
