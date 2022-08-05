@@ -20,9 +20,9 @@ jobs:
         - name: Install modules
           run: |
             cd Fragments
-            npm install
+            npm install -g eslint
 
         - name: Run eslint
           uses: stefanoeb/eslint-action@1.0.2
           with:
-            files: src/
+            files: Fragments/src/
