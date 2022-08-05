@@ -48,6 +48,9 @@ jobs:
           cd Fragments
           npm -g install eslint-plugin-import eslint-config-airbnb-base
 
+      - name: Config eslint
+        run: ./node_modules/.bin/eslint --init
+
       - name: Run eslint
         uses: stefanoeb/eslint-action@1.0.2
         with:
