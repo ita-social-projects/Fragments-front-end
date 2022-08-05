@@ -51,7 +51,7 @@ jobs:
       - name: Run eslint
         run: |
           cd Fragments
-          yarn run eslint "./**"" --ext .js,.jsx
+          yarn run eslint "./**" --ext .js,.jsx
 
 ################################
   # sonarcloud:
