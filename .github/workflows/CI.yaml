@@ -48,10 +48,12 @@ jobs:
         run: |
           cd Fragments
           npm install
-          npm init @eslint/config
+          npm init eslint@8.21.0
 
       - name: Run ESLint
-        run: npx eslint Fragments/**
+        run: |
+          cd Fragments
+          npx eslint src/**
 
 
 ################################
