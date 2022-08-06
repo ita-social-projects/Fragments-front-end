@@ -41,7 +41,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install eslint
+      - name: Install modules
         run: |
           cd Fragments
           yarn
@@ -51,40 +51,32 @@ jobs:
           cd Fragments
           yarn run eslint src/ --ext .js --ext .jsx --color
 
-################################
+  sonarcloud_analysis:
+    needs: [build_and_test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone Front-End repo
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
 
-#   sonarcloud:
-#     runs-on: ubuntu-latest
+      - name: Install npm dependencies
+        run: |
+          cd Fragments
+          npm install
+          npm test -- --coverage
 
-#     needs: [install-and-test]
-
-#     steps:
-#       - uses: actions/checkout@v2
-
-#       - name: Install npm dependencies
-
-#         run: |
-#           cd Car
-#           npm install
-#            npm test -- --coverage
-#       - name: SonarCloudScan
-#         uses: sonarsource/sonarcloud-github-action@master
-
-#         env:
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-#           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
-#         with:
-#           args: >
-#             -Dsonar.organization=ita-social-projects
-#             -Dsonar.projectKey=ita-social-projects_Car-Front-End
-#             -Dsonar.javascript.lcov.reportPaths=Car/coverage/lcov.info
-#             -Dsonar.sources=./Car
-#             -Dsonar.exclusions=**/coverage/**,**/__tests__/**,**/__mocks__/**,**/ios/**,**/android/**,**/*config.js,**/styles/**,**/constants/**,**/data/**,**/ChatStyles/**,**/*Style.tsx,**/*-test.tsx
-#             -Dsonar.verbose=false
-#             -Dsonar.coverage.exclusions=**/__tests__/**,**/__mocks__/**,**/coverage/**,**/*config.js,**/styles/**,**/constants/**,**/data/**,**/ChatStyles/**,**/ios/**,**/android/**,**/*Style.tsx,**/*-test.tsx
-#             -Dsonar.c.file.suffixes=-
-#             -Dsonar.cpp.file.suffixes=-
-#             -Dsonar.objc.file.suffixes=-
-#             -Dsonar.java.file.suffixes=-
+      - name: SonarScanner for JS with pull request decoration support
+        uses: sonarsource/sonarcloud-github-action@master
+        with:
+          args: >
+            -Dsonar.organization=ita-social-projects
+            -Dsonar.projectKey=ita-social-projects_Fragments-front-end
+            -Dsonar.javascript.lcov.reportPaths=Fragments/coverage/lcov.info
+            -Dsonar.sources=./Fragments
+            -Dsonar.exclusions=**/coverage/**,**/__tests__/**,**/__mocks__/**,**/styles/**,**/*test.jsx
+            -Dsonar.verbose=true
+            -Dsonar.coverage.exclusions=**/__tests__/**,**/__mocks__/**,**/coverage/**,**/styles/**,**/*test.jsx
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
