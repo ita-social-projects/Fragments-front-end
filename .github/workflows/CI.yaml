@@ -3,7 +3,6 @@ on:
   push:
     branches:
       - master
-      - 24-add-ci-for-fragments-front-end #test branch
   pull_request:
     branches:
       - master
@@ -33,7 +32,7 @@ jobs:
           npm test -- --coverage
 
   eslint:
-    # needs: [build_and_test]
+    needs: [build_and_test]
     runs-on: ubuntu-latest
     steps:
       - name: Clone Front-End repo
@@ -52,7 +51,7 @@ jobs:
           yarn run eslint src/ --ext .js --ext .jsx --color
 
   sonarcloud_analysis:
-    # needs: [build_and_test]
+    needs: [build_and_test]
     runs-on: ubuntu-latest
     steps:
       - name: Clone Front-End repo
