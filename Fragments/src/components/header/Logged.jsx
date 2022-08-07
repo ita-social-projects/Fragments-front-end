@@ -1,14 +1,18 @@
-import React from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { hub } from "../../services/notificationService";
 
 const Logged = ({ ...props }) => {
-  const navigate = useNavigate();
-  const fetchNotificationPage = () => navigate('/Notifications');
+  const [notify, setNotify] = useState()
+  hub.hubConnection.on("createNotify", (message) => {
+    setNotify(message)
+    console.log(message);
+  },[]);
+  
   return (
     <div className={props.className.userLogged}>
       <span className={props.className.projects}>Мої проекти</span>
       <span className={props.className.searchIcon}>
-        <img src="/bellnotification.svg" alt="notif" onClick={fetchNotificationPage}/>
+        {notify ? <img src="/bellnotification.svg" alt="bell" /> : <img src="/bell.svg" alt="noBell" />}
       </span>
       <div className={props.className.profile}>
         <img
