@@ -5,7 +5,7 @@ import LeftSide from "../left side information/LeftSide";
 import UpperBorderInformation from "../upper border information/UpperBorderInformation";
 import DownBorder from "../down border infortmation/DownBorder";
 import { useSearchParams } from "react-router-dom";
-import getDataFromApi from "../../getmethod/getDataFromApi";
+import getDataFromApi from "../getmethod/getDataFromApi";
 
 const Profile = () => {
   const [notes, getNotes] = useState({
@@ -24,7 +24,7 @@ const Profile = () => {
   const personid = searchParams.get("id");
 
   useEffect(() => {
-      getDataFromApi({getNotes, personid});
+    getDataFromApi({ getNotes, personid });
   }, [personid]);
 
   const mapping = () => {

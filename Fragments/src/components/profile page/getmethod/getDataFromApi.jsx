@@ -1,5 +1,5 @@
 import axios from "axios";
-import variables from "../important variables/variables";
+import variables from "../../important variables/variables";
 
 const getDataFromApi = ({ getNotes, personid }) => {
   const url = variables.API_URL;
