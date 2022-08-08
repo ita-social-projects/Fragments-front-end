@@ -47,7 +47,7 @@ const NotificationPage = () => {
     });
   };
   const options = {
-    headers: { Authorization: `bearer ${localStorage.getItem("token")}` },
+    headers: { Authorization: `bearer ${localStorage.getItem("access_token")}` },
     params: {
       sortingBy: isNewest,
       pageIndex: 1,
