@@ -14,7 +14,7 @@ describe("Get methdod gets info from api:", () => {
     const getNotes = jest.fn();
     axios.get.mockResolvedValueOnce(response);
     const result = getDataFromApi({ getNotes, personid });
-    expect(result).resolves.toEqual(response);
+    await expect(result).resolves.toEqual(response);
     jest.unmock("../../components/profile page/getmethod/getDataFromApi");
   });
 
