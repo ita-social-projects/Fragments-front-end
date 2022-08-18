@@ -3,45 +3,45 @@ import Sidebar from "./Sidebar";
 import "../UI/adminPage/AdminPage.scss";
 import "@progress/kendo-theme-default/dist/all.css";
 import { Grid, GridColumn as Column } from "@progress/kendo-react-grid";
-
+import FilterMenu from "./FilterMenu";
 import axios from "axios";
 import variables from "../important variables/variables";
 
 const AdminPage = () => {
-  const seed = [
-    {
-      Email: "fdsfsdf@gmail.com",
-      Fullname: "Moris Kul",
-      Role: ["Адмін", "Користувач"],
-      RegisterDate: "18.09.2021",
-      LastActivity: "03.05.2022",
-      Category: "Представник влади",
-    },
-    {
-      Email: "fdsfsdf@gmail.com",
-      Fullname: "Moris Kul",
-      Role: ["Користувач"],
-      RegisterDate: "18.09.2021",
-      LastActivity: "03.05.2022",
-      Category: "Представник влади",
-    },
-    {
-      Email: "fdsfsdf@gmail.com",
-      Fullname: "Moris Kul",
-      Role: ["Користувач"],
-      RegisterDate: "18.09.2021",
-      LastActivity: "03.05.2022",
-      Category: "Представник влади",
-    },
-    {
-      Email: "fdsfsdf@gmail.com",
-      Fullname: "Moris Kul",
-      Role: ["Користувач"],
-      RegisterDate: "18.09.2021",
-      LastActivity: "03.05.2022",
-      Category: "Представник влади",
-    },
-  ];
+  // const seed = [
+  //   {
+  //     Email: "fdsfsdf@gmail.com",
+  //     Fullname: "Moris Kul",
+  //     Role: ["Адмін", "Користувач"],
+  //     RegisterDate: "18.09.2021",
+  //     LastActivity: "03.05.2022",
+  //     Category: "Представник влади",
+  //   },
+  //   {
+  //     Email: "fdsfsdf@gmail.com",
+  //     Fullname: "Moris Kul",
+  //     Role: ["Користувач"],
+  //     RegisterDate: "18.09.2021",
+  //     LastActivity: "03.05.2022",
+  //     Category: "Представник влади",
+  //   },
+  //   {
+  //     Email: "fdsfsdf@gmail.com",
+  //     Fullname: "Moris Kul",
+  //     Role: ["Користувач"],
+  //     RegisterDate: "18.09.2021",
+  //     LastActivity: "03.05.2022",
+  //     Category: "Представник влади",
+  //   },
+  //   {
+  //     Email: "fdsfsdf@gmail.com",
+  //     Fullname: "Moris Kul",
+  //     Role: ["Користувач"],
+  //     RegisterDate: "18.09.2021",
+  //     LastActivity: "03.05.2022",
+  //     Category: "Представник влади",
+  //   },
+  // ];
 
   const [result, setResult] = useState([
     {
@@ -64,22 +64,22 @@ const AdminPage = () => {
     setSearch(event.target.value);
   };
 
-  const options = {
-    headers: { Authorization: `bearer ${localStorage.getItem("token")}` },
-    params: {
-      Roles: "user",
-      RepresentativeHEI: false,
-      RepresentativeAuthority: false,
-      SearchText: search,
-    },
-  };
+  const handleSearchGetMethod = useCallback(async () => {
+    const options = {
+      headers: { Authorization: `bearer ${localStorage.getItem("token")}` },
+      params: {
+        Roles: "user",
+        RepresentativeHEI: false,
+        RepresentativeAuthority: false,
+        SearchText: search,
+      },
+    };
 
-  const triggerAPI = useCallback(async () => {
     await axios
       .get(`${variables.API_URL}Admin/getUsersBySearch`, options)
       .then((response) => setResult(response.data))
       .catch((error) => console.log(error));
-  }, [options]);
+  }, [search]);
 
   const allDataGet = useCallback(async () => {
     await axios
@@ -88,20 +88,21 @@ const AdminPage = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  const handleSubmit = useCallback(
+  const trigerToTakeData = useCallback(
     (e) => {
-      triggerAPI();
+      handleSearchGetMethod();
     },
-    [triggerAPI]
+    [handleSearchGetMethod]
   );
 
   useEffect(() => {
     if (search.length >= 3) {
-      handleSubmit();
+      trigerToTakeData();
     } else {
       allDataGet();
     }
-  }, [search, handleSubmit, allDataGet]);
+  }, [search, trigerToTakeData, allDataGet]);
+
   return (
     <div className="admin-wrapper">
       <Sidebar />
@@ -114,9 +115,15 @@ const AdminPage = () => {
             onChange={handleOnChangeSearch}
             maxLength="25"
           />
-          <img className="filterIcon" src="/filter.svg" alt="filter logo" />
+          <FilterMenu />
           <button className="setButton">Призначити роль</button>
         </div>
+        <Grid className="dataGrid" data={result}>
+          <Column field="" width="52px" />
+          <Column field="email" title="Е-мейл" width="144px" />
+          <Column field="fullName" title="Прізвище та ім'я" width="190px" />
+          <Column field="representativeHEI" title="Категорія" width="180px" />
+        </Grid>
         {/* <Grid className="dataGrid" data={seed}>
           <Column field="" width="52px" />
           <Column field="Email" title="Е-мейл" width="144px" />
@@ -126,12 +133,6 @@ const AdminPage = () => {
           <Column field="LastActivity" title="Дата останньої активності" width="208px" />
           <Column field="Category" title="Категорія" width="180px" />
         </Grid> */}
-        <Grid className="dataGrid" data={result}>
-          <Column field="" width="52px" />
-          <Column field="email" title="Е-мейл" width="144px" />
-          <Column field="fullName" title="Прізвище та ім'я" width="190px" />
-          <Column field="representativeHEI" title="Категорія" width="180px" />
-        </Grid>
       </div>
     </div>
   );

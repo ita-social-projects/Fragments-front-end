@@ -1,0 +1,132 @@
+.iconButton {
+  margin-left: 30px;
+  display: block;
+  background-color: #ffffff;
+  border: none;
+  width: 36px;
+  height: 36px;
+}
+.filterButton {
+  margin-bottom: 2px;
+}
+.iconButton:hover {
+  background: #d7d7dc;
+  border-radius: 100%;
+}
+.wrapper {
+  display: block;
+  padding: 44px;
+  gap: 40px;
+  isolation: isolate;
+  position: absolute;
+  width: 592px;
+  height: 1020px;
+  left: 424px;
+  border: solid rgb(139, 32, 32) 1px;
+  z-index: 1;
+  top: 136px;
+  background: rgb(243, 223, 223);
+}
+
+.bigText {
+  margin-top: 10px;
+  margin-bottom: 40px;
+  font-family: "Montserrat Alternates";
+  width: 504px;
+  height: 32px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+
+  color: rgb(0, 0, 0);
+}
+.textWithCross {
+  display: flex;
+}
+
+.crossButton {
+  margin-top: 10px;
+  display: block;
+  background-color: rgb(243, 223, 223);
+  border: none;
+  padding: 0;
+  height: 20px;
+}
+
+.smallText {
+  width: 504px;
+  height: 32px;
+  margin-bottom: 8px;
+  font-family: "Montserrat Alternates";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 32px;
+  color: #000000;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+
+.checkbox input {
+  margin-right: 15px;
+  appearance: none;
+  background-color: #fff;
+  margin: 1px;
+  font: inherit;
+  color: currentColor;
+  width: 1.15em;
+  height: 1.15em;
+  border: 0.15em solid currentColor;
+  border-radius: 0em;
+  display: grid;
+  grid-area: 2px;
+  place-content: center;
+}
+.checkbox input::before {
+  content: "";
+
+  width: 0.65em;
+  height: 0.65em;
+  transform: scale(0);
+  box-shadow: inset 1em 1em var(--form-control-color);
+  background-color: CanvasText;
+  clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+}
+
+.checkbox input:checked::before {
+  transform: scale(1);
+  background-color: #4f33fd;
+}
+.checkbox input:checked {
+  border: 0.15em solid #4f33fd;
+  color: #4f33fd;
+}
+
+.checkbox {
+  margin-top: 20px;
+  height: 24px;
+  display: grid;
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  width: 468px;
+  grid-template-columns: 18px auto;
+  gap: 18px;
+}
+.checkbox + .checkbox {
+  margin-top: 24px;
+}
+
+.line {
+  margin-top: 39px;
+  margin-bottom: 39px;
+  width: 504px;
+  height: 0px;
+  background: black;
+  border: 1px solid black;
+}

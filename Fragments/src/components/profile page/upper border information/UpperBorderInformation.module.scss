@@ -50,9 +50,9 @@
   height: 20px;
 }
 
-.gmailTextBox{
-margin-bottom: 32px;
-display: block;
+.gmailTextBox {
+  margin-bottom: 32px;
+  display: block;
 }
 .simpleText {
   font-family: "Mulish", sans-serif;
@@ -61,7 +61,7 @@ display: block;
   font-size: 14px;
   line-height: 20px;
   letter-spacing: 0.2px;
-  display:flex;
+  display: flex;
   color: #909095;
   margin-bottom: 4px;
 }
@@ -77,20 +77,19 @@ display: block;
   align-self: stretch;
 }
 
-.detailsTextBox{
-    display: block;
-
+.detailsTextBox {
+  display: block;
 }
-.channelBox{
-    margin-right: 92px;
+.channelBox {
+  margin-right: 92px;
 }
-.upperBorderBorder{
-    border-bottom: 2px solid #000000;
-    margin-bottom: 49px;
-    max-width: 1600px;
-    width: 100%;
+.upperBorderBorder {
+  border-bottom: 2px solid #000000;
+  margin-bottom: 49px;
+  max-width: 1600px;
+  width: 100%;
 }
-.channelAndTextBox{
+.channelAndTextBox {
   display: flex;
-  margin-bottom: 32px ;
+  margin-bottom: 32px;
 }
