@@ -1,0 +1,57 @@
+.inputBox {
+  width: 504px;
+  font-size: 22px;
+  padding: 5px 8px 4px 8px;
+
+  border: none;
+  border-bottom: 1px solid #666;
+  outline-color: none;
+  outline-width: 0px;
+}
+.inputbox:focus-visible {
+  outline-color: inherit;
+}
+.calendarWrap {
+  display: inline-block;
+  position: relative;
+}
+
+.calendarElement {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 40px;
+  border: 1px solid #ccc;
+  z-index: 999;
+}
+.rdrDefinedRangesWrapper {
+  display: none;
+}
+// .rdrDateDisplayWrapper {
+//   display: none;
+// }
+.rdrMonthPicker select {
+  padding: 0 0 0 0;
+}
+.rdrYearPicker select {
+  padding: 0 0 0 0;
+}
+// .rdrDayToday.rdrDayNumber span:after {
+//   background: black !important;
+// }
+.rdrDayToday span:after {
+  background: #000000 !important;
+}
+
+.rdrDayToday:not(.rdrDayPassive) .rdrInRange ~ .rdrDayNumber span:after,
+.rdrDayToday:not(.rdrDayPassive) .rdrStartEdge ~ .rdrDayNumber span:after,
+.rdrDayToday:not(.rdrDayPassive) .rdrEndEdge ~ .rdrDayNumber span:after,
+.rdrDayToday:not(.rdrDayPassive) .rdrSelected ~ .rdrDayNumber span:after {
+  background: #fff !important;
+}
+
+.rdrDayStartPreview,
+.rdrDayInPreview,
+.rdrDayEndPreview {
+  border: 0px solid black !important;
+}

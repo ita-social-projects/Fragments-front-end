@@ -8,40 +8,15 @@ import axios from "axios";
 import variables from "../important variables/variables";
 
 const AdminPage = () => {
-  // const seed = [
-  //   {
-  //     Email: "fdsfsdf@gmail.com",
-  //     Fullname: "Moris Kul",
-  //     Role: ["Адмін", "Користувач"],
-  //     RegisterDate: "18.09.2021",
-  //     LastActivity: "03.05.2022",
-  //     Category: "Представник влади",
-  //   },
-  //   {
-  //     Email: "fdsfsdf@gmail.com",
-  //     Fullname: "Moris Kul",
-  //     Role: ["Користувач"],
-  //     RegisterDate: "18.09.2021",
-  //     LastActivity: "03.05.2022",
-  //     Category: "Представник влади",
-  //   },
-  //   {
-  //     Email: "fdsfsdf@gmail.com",
-  //     Fullname: "Moris Kul",
-  //     Role: ["Користувач"],
-  //     RegisterDate: "18.09.2021",
-  //     LastActivity: "03.05.2022",
-  //     Category: "Представник влади",
-  //   },
-  //   {
-  //     Email: "fdsfsdf@gmail.com",
-  //     Fullname: "Moris Kul",
-  //     Role: ["Користувач"],
-  //     RegisterDate: "18.09.2021",
-  //     LastActivity: "03.05.2022",
-  //     Category: "Представник влади",
-  //   },
-  // ];
+  const [seed] = useState([
+    {
+      roleList: [],
+      representativeHEI: false,
+      representativeAuthority: false,
+      dateOfRegistration: "",
+      dateOfLastActivity: "",
+    },
+  ]);
 
   const [result, setResult] = useState([
     {
@@ -49,11 +24,10 @@ const AdminPage = () => {
       fullName: "",
       email: "",
       birthday: "",
-      photo: "",
+      registrationDate: "",
+      lastActivityDate: "",
       representativeHEI: "",
       representativeAuthority: "",
-      benefits: "",
-      interests: "",
       channelsOfRefferences: [],
     },
   ]);
@@ -61,16 +35,18 @@ const AdminPage = () => {
   const [search, setSearch] = useState("");
 
   const handleOnChangeSearch = (event) => {
+    console.log(seed);
     setSearch(event.target.value);
   };
 
   const handleSearchGetMethod = useCallback(async () => {
+    console.log(seed + search);
     const options = {
       headers: { Authorization: `bearer ${localStorage.getItem("token")}` },
       params: {
         Roles: "user",
-        RepresentativeHEI: false,
-        RepresentativeAuthority: false,
+        RepresentativeHEI: seed.representativeHEI,
+        RepresentativeAuthority: seed.representativeAuthority,
         SearchText: search,
       },
     };
@@ -88,20 +64,13 @@ const AdminPage = () => {
       .catch((error) => console.log(error));
   }, []);
 
-  const trigerToTakeData = useCallback(
-    (e) => {
-      handleSearchGetMethod();
-    },
-    [handleSearchGetMethod]
-  );
-
   useEffect(() => {
     if (search.length >= 3) {
-      trigerToTakeData();
+      handleSearchGetMethod();
     } else {
       allDataGet();
     }
-  }, [search, trigerToTakeData, allDataGet]);
+  }, [search, handleSearchGetMethod, allDataGet]);
 
   return (
     <div className="admin-wrapper">
@@ -114,15 +83,25 @@ const AdminPage = () => {
             value={search}
             onChange={handleOnChangeSearch}
             maxLength="25"
+            onSubmit={handleSearchGetMethod}
           />
-          <FilterMenu />
+          <FilterMenu seed={seed} />
           <button className="setButton">Призначити роль</button>
         </div>
         <Grid className="dataGrid" data={result}>
           <Column field="" width="52px" />
           <Column field="email" title="Е-мейл" width="144px" />
           <Column field="fullName" title="Прізвище та ім'я" width="190px" />
-          <Column field="representativeHEI" title="Категорія" width="180px" />
+          <Column
+            field="representativeHEI"
+            title="Представник ЗВО"
+            width="180px"
+          />
+          <Column
+            field="representativeAuthority"
+            title="Представник влади"
+            width="180px"
+          />
         </Grid>
         {/* <Grid className="dataGrid" data={seed}>
           <Column field="" width="52px" />

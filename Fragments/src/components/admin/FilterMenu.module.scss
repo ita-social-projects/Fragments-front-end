@@ -20,14 +20,24 @@
   isolation: isolate;
   position: absolute;
   width: 592px;
-  height: 1020px;
+  height: 948px;
   left: 424px;
-  border: solid rgb(139, 32, 32) 1px;
+  border: none;
   z-index: 1;
   top: 136px;
-  background: rgb(243, 223, 223);
+  background: white;
 }
-
+.background {
+  position: absolute;
+  min-width: 1440px;
+  width: 100%;
+  height: 100%;
+  min-height: 1440px;
+  left: 0px;
+  top: 72px;
+  z-index: 1;
+  background: rgb(101, 101, 101);
+}
 .bigText {
   margin-top: 10px;
   margin-bottom: 40px;
@@ -48,7 +58,7 @@
 .crossButton {
   margin-top: 10px;
   display: block;
-  background-color: rgb(243, 223, 223);
+  background-color: white;
   border: none;
   padding: 0;
   height: 20px;
@@ -127,6 +137,57 @@
   margin-bottom: 39px;
   width: 504px;
   height: 0px;
-  background: black;
-  border: 1px solid black;
+  background: #ecebf1;
+  border: 1px solid #ecebf1;
 }
+
+button[type="button"] {
+  color: #000000 !important;
+}
+span[class="rdrStartEdge rdrEndEdge"] {
+  color: #000000 !important;
+}
+span[class="rdrStartEdge"] {
+  color: #000000 !important;
+}
+span[class="rdrEndEdge"] {
+  color: #000000 !important;
+}
+span[class="rdrInRange"] {
+  border-radius: 0% !important;
+  color: grey !important;
+}
+button[class="rdrDay"] {
+  color: #000000 !important;
+}
+button[class="rdrDayActive"] {
+  color: #000000 !important;
+}
+button[class="rdrDayHovere"] {
+  color: #000000 !important;
+  border: 1px solid black !important;
+  background: black !important;
+}
+button[class="rdrDayToday"] {
+  background: black !important;
+}
+
+span[class="rdrDayToday rdrDayNumber"]::after {
+  background: black !important;
+}
+// span[class="rdrDayNumber"] {
+//   top: 0px !important;
+//   bottom: 0px !important;
+// }
+
+// [class="rdrDayToday rdrDayNumber span::after"] {
+//   content: "";
+//   position: absolute;
+//   bottom: 4px;
+//   left: 50%;
+//   transform: translate(-50%, 0);
+//   width: 18px;
+//   height: 2px;
+//   border-radius: 2px;
+//   background: #000000 !important;
+// }
