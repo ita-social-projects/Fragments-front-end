@@ -1,0 +1,78 @@
+.roleLabel {
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.roleItem + .roleItem {
+  margin-top: 20px;
+}
+.adminRole {
+  box-sizing: border-box;
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px;
+  gap: 4px;
+
+  width: 65px;
+  height: 28px;
+
+  /* Accent/Purple/5 */
+
+  background: #f0f2ff;
+  /* Accent/Purple/20 */
+
+  border: 1px solid #adb0fe;
+  border-radius: 20px;
+}
+.moderatorRole {
+  box-sizing: border-box;
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px;
+  gap: 4px;
+
+  width: 102px;
+  height: 28px;
+
+  /* Accent/Green/5 */
+
+  background: #e8f5e1;
+  /* Accent/Green/20 */
+
+  border: 1px solid #96e073;
+  border-radius: 20px;
+}
+.userRole {
+  box-sizing: border-box;
+
+  /* Auto layout */
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px;
+  gap: 4px;
+
+  width: 105px;
+  height: 28px;
+
+  /* Accent/Orange/5 */
+
+  background: #fff6e8;
+  /* Accent/Orange/20 */
+
+  border: 1px solid #fed9a3;
+  border-radius: 20px;
+}

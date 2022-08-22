@@ -20,37 +20,35 @@
   align-self: center;
 }
 
-.centerInfo{
+.centerInfo {
   max-width: (1439px);
   width: 100%;
   margin-left: 3.25rem;
 }
 
-.backButton{
+.backButton {
   display: flex;
-flex-direction: row;
-justify-content: center;
-align-items: center;
-border: #ffffff;
-width: 221px;
-gap:8px;
-height: 36px;
-margin-top: 26px;
-background: #F8F8F9;
-border-radius: 999px;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: #ffffff;
+  width: 221px;
+  gap: 8px;
+  height: 36px;
+  margin-top: 26px;
+  background: #f8f8f9;
+  border-radius: 999px;
 }
 
-.backButtonText{
+.backButtonText {
   width: 173px;
-height: 20px;
-font-family: 'Mulish', sans-serif;
-font-style: normal;
-font-weight: 500;
-font-size: 14px;
-line-height: 20px;
-text-align: center;
-letter-spacing: 0.2px;
-color: #000000;
+  height: 20px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  letter-spacing: 0.2px;
+  color: #000000;
 }
-
-

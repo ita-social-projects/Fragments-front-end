@@ -1,0 +1,78 @@
+.adminWrapper {
+  background: #fefdff;
+}
+.pageBody {
+  flex-direction: column;
+  margin-left: 372px;
+}
+.adminTable {
+  width: 1016px;
+  height: 1384px;
+}
+.properties {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 1016px;
+  height: 48px;
+  margin-bottom: 120px;
+}
+.filterInput {
+  margin-left: 10px;
+  flex-direction: row;
+  resize: none;
+  outline: none;
+  border: none;
+  width: 400px;
+  height: 32px;
+}
+.searchButton {
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+.close {
+  display: none;
+  border-radius: 20px;
+  text-align: center;
+  cursor: pointer;
+}
+.inputWithSearch > input:focus ~ .close {
+  display: inline;
+}
+.inputWithSearch {
+  justify-content: center;
+  flex-direction: row;
+  border-bottom: 2px solid black;
+}
+.filterIcon {
+  margin-left: 10px;
+  cursor: pointer;
+}
+.setButton {
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: 0;
+  margin-left: 341px;
+  width: 169px;
+  height: 48px;
+  font-family: "Mulish";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  color: #ffffff;
+  background: #4f33fd;
+  border-radius: 999px;
+}
+.adminTitle {
+  font-weight: bold;
+  margin-top: 60px;
+  font-family: "Montserrat Alternates";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  margin-bottom: 44px;
+}

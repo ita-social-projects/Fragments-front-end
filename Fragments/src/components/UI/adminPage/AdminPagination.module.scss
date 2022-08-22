@@ -1,0 +1,68 @@
+.paginationContainer {
+  margin-top: 18px;
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+  width: 100%;
+  font-weight: 500;
+  font-size: 15px;
+}
+.container {
+}
+.pageInfo {
+  width: 100px;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+}
+.number {
+  list-style-type: none;
+  width: 40px;
+  height: 30px;
+  margin-right: 6px;
+}
+.pageItem {
+  list-style-type: none;
+  user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Mulish", sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: black;
+  /* padding: 8px 14px; */
+  margin-right: 6px;
+  width: 40px;
+  height: 30px;
+  cursor: pointer;
+}
+
+.pageItem:hover {
+  color: black;
+}
+
+.previousArrow {
+  list-style-type: none;
+  transform: scale(-1, 1);
+  transform-origin: center;
+  margin: 0px, 0px, 0px, 0px;
+}
+.nextArrow {
+  list-style-type: none;
+  margin: 0px, 0px, 0px, 0px;
+}
+.activePage {
+  list-style: none;
+  border-bottom: 2px solid black;
+  transition: 0.001s ease;
+}
+
+.disabledPage {
+  cursor: default;
+  opacity: 0;
+}
