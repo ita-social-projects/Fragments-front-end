@@ -1,45 +1,48 @@
-import axios from "axios";
-import React, { useState } from "react";
-import "../UI/notifications/notificationList.scss"
-import variables from "../important variables/variables.js"
+import React from "react";
+import styles from "../UI/notifications/notificationList.module.scss";
+import NotificationRequests from "../requests/NotificationRequests";
 
-const NotificationList = ({header,list,onChoose}) => {
-
-  const[previousDiv,setPreviousDiv] = useState(document.getElementsByTagName("div"));
-
+const NotificationList = ({
+  previousDiv,
+  setPreviousDiv,
+  header,
+  list,
+  onChoose,
+}) => {
   const handleClickNotification = (id) => {
-    const notification = list.find(x => x.notificationId === id);
+    const notification = list.find((x) => x.notificationId === id);
     onChoose(notification);
-    if(!notification.isRead){
+    if (!notification.isRead) {
       notification.isRead = true;
-      axios.post(`${variables.API_URL}Notifications/readMessage`,notification,{headers:header});
+      NotificationRequests().post(notification, header);
     }
     const div = document.getElementById(id.toString());
-    previousDiv.className = "notificationItem";
-    div.className = "notificationItemActive";
+    previousDiv.className = styles.notificationItem;
+    div.className = styles.notificationItemActive;
     setPreviousDiv(div);
-  }
-
+  };
 
   return (
     <div>
-        {list.map((element,index) => (
-          <div key = {index} className = "top-border">
-            <div id = {element.notificationId.toString()} className = "notificationItem" onClick={() => handleClickNotification(element.notificationId)}>
-              <p className="title">
-                {element.isRead ? <></>:<span className="dot"></span>}
+      {list.length !== 0 &&
+        list.map((element, index) => (
+          <div key={index} className={styles.topBorder}>
+            <div
+              id={element.notificationId.toString()}
+              className={styles.notificationItem}
+              onClick={() => handleClickNotification(element.notificationId)}
+            >
+              <p className={styles.title}>
+                {!element.isRead && <span className={styles.dot}></span>}
                 {element.theme}
               </p>
-              <p className="paragraph">
-                {element.theme}
-              </p>
-              <p className="date">
+              <p className={styles.paragraph}>{element.theme}</p>
+              <p className={styles.date}>
                 {new Date(element.date).toLocaleDateString()}
               </p>
             </div>
           </div>
-        ))} 
-
+        ))}
     </div>
   );
 };

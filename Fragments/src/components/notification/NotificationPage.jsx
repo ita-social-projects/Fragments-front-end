@@ -1,76 +1,94 @@
-import React, { useState } from "react";
-import "../UI/notifications/notificationPage.scss"
+import React, { useEffect, useState } from "react";
+import styles from "../UI/notifications/notificationPage.module.scss";
 import NotificationList from "./NotificationList";
 import FilterDropdown from "./FilterDropdown";
-import axios from "axios";
-import variables from "../important variables/variables.js"
-import { useEffect } from "react";
+import getNotifications from "../requests/NotificationRequests.js";
+import variables from "../important variables/variables";
 
 const NotificationPage = () => {
-  const [notificationsList,setNotificationsList] = useState([{
-    notificationId:0,isRead:false,theme:"",date:"",body:""}])
+  const [notificationsList, setNotificationsList] = useState([]);
 
-  const [choosenNotification,setChoosenNotification] = useState({
-    notificationId:0,isRead:false,theme:"",date:"",body:""});
+  const [previousDiv, setPreviousDiv] = useState(
+    document.getElementsByTagName("div")
+  );
+
+  const [choosenNotification, setChoosenNotification] = useState({});
 
   const [isAll, setIsAll] = useState(true);
 
-  const [isNewest,setIsNewest] = useState(true);
+  const [isNewest, setIsNewest] = useState(true);
 
-  const getSelectedFilter = () =>{
-    setChoosenNotification({notificationId:0,isRead:false,theme:"",date:"",body:""})
-    document.getElementsByName("sizeBy").forEach(radio =>{
-      if(radio.checked && radio.value === "all"){
+  const getSelectedFilter = () => {
+    previousDiv.className = "notificationItem";
+    setChoosenNotification({});
+    document.getElementsByName("sizeBy").forEach((radio) => {
+      if (radio.checked && radio.value === "all") {
         setIsAll(true);
-        console.log(true)
-      }
-      else if(radio.checked && radio.value === "unread"){
+      } else if (radio.checked && radio.value === "unread") {
         setIsAll(false);
-        console.log(false)
       }
-    })
-  }
-  const options = {
-    headers: { Authorization: `bearer ${localStorage.getItem("token")}`},
-    params: {
-      sortingBy:isNewest,
-      pageIndex:1,
-      typeOfRead:isAll
-    }
+    });
   };
-  
+
   useEffect(() => {
-    axios.get(`${variables.API_URL}Notifications/getNotifications`,options).then((response) => setNotificationsList(response.data))
-  },[notificationsList])
+    const options = {
+      headers: variables.header,
+      params: {
+        sortingBy: isNewest,
+        pageIndex: 1,
+        typeOfRead: isAll,
+      },
+    };
+    getNotifications()
+      .read(options)
+      .then((response) => setNotificationsList(response.data));
+  }, [isNewest, isAll]);
 
   return (
-    <div className="wrapper">
-        <div className="baner">
-          <p className="banerText">Сповіщення</p>
+    <div className={styles.wrapper}>
+      <div className={styles.baner}>
+        <p className={styles.banerText}>Сповіщення</p>
+      </div>
+      <div className={styles.sidebar}>
+        <div className={styles.toggle} onChange={getSelectedFilter}>
+          <input
+            type="radio"
+            name="sizeBy"
+            value="all"
+            id="sizeAll"
+            defaultChecked
+          />
+          <label htmlFor="sizeAll">Всі</label>
+          <input type="radio" name="sizeBy" value="unread" id="sizeUnread" />
+          <label htmlFor="sizeUnread">Непрочитані</label>
+          <FilterDropdown
+            previousDiv={previousDiv}
+            setChoosenNotification={setChoosenNotification}
+            isNewest={isNewest}
+            setIsNewest={setIsNewest}
+          />
         </div>
-        <div className="sidebar">
-          <div className="toggle" onChange={getSelectedFilter}>
-            <input type="radio" name="sizeBy" value="all" id="sizeAll" defaultChecked/>
-            <label htmlFor="sizeAll">Всі</label>
-            <input type="radio" name="sizeBy" value="unread" id="sizeUnread" />
-            <label htmlFor="sizeUnread">Непрочитані</label>
-            <FilterDropdown isNewest={setIsNewest}/>
-          </div>
-          <div className="notificationsList">
-            <NotificationList header = {options.headers} list={notificationsList} onChoose={setChoosenNotification}/>
-          </div>
+        <div className={styles.notificationsList}>
+          <NotificationList
+            previousDiv={previousDiv}
+            setPreviousDiv={setPreviousDiv}
+            header={variables.header}
+            list={notificationsList}
+            onChoose={setChoosenNotification}
+          />
         </div>
-        <div className="notificationDetails">
-          <p className="notificationTitle">
+      </div>
+      {Object.keys(choosenNotification).length !== 0 && (
+        <div className={styles.notificationDetails}>
+          <p className={styles.notificationTitle}>
             {choosenNotification.theme}
           </p>
-          <p className="notificationDate">
-            {choosenNotification.date}
+          <p className={styles.notificationDate}>
+            {new Date(choosenNotification.date).toLocaleDateString()}
           </p>
-          <p className="notificationBody">
-            {choosenNotification.body}
-          </p>
+          <p className={styles.notificationBody}>{choosenNotification.body}</p>
         </div>
+      )}
     </div>
   );
 };

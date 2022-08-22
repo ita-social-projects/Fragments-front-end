@@ -1,25 +1,55 @@
 import React, { useState } from "react";
-import "../UI/notifications/filterDropdown.scss"
+import styles from "../UI/notifications/filterDropdown.module.scss";
 
-const FilterDropdown = ({isNewest}) =>{
-    const [isOpen,setIsOpen] = useState(false)
+const FilterDropdown = ({
+  previousDiv,
+  setChoosenNotification,
+  isNewest,
+  setIsNewest,
+}) => {
+  const [isOpen, setIsOpen] = useState(false);
 
-    return(
-        <div>
-            <div className="iconButton" onClick={() => setIsOpen(!isOpen)}>
-                <img src="/filter.svg" alt="filter logo" />
-            </div>
-            {isOpen ? 
-                <div className="dd-wrapper">
-                    <p className="dd-title">Сортувати</p>
-                    <ul className="dd-list">
-                        <li onClick={() => isNewest(true)}>Найновіші</li>
-                        <li onClick={() => isNewest(false)}>Найстаріші</li>
-                    </ul>
-                </div>:<></>
-            } 
+  const handleFilterChange = (filter) => {
+    if (isNewest !== filter) {
+      previousDiv.className = "notificationItem";
+      setChoosenNotification({});
+      setIsOpen(false);
+      setIsNewest(filter);
+    }
+  };
+
+  return (
+    <div>
+      <div className={styles.iconButton} onClick={() => setIsOpen(!isOpen)}>
+        <img src="/filter.svg" alt="filter logo" />
+      </div>
+      {isOpen && (
+        <div className={styles.ddWrapper}>
+          <p className={styles.ddTitle}>Сортувати</p>
+          <ul className={styles.ddList}>
+            <li onClick={() => handleFilterChange(true)}>
+              {isNewest && (
+                <i
+                  style={{ marginLeft: -25, marginRight: 9 }}
+                  className="arrow fa fa-check"
+                ></i>
+              )}
+              Найновіші
+            </li>
+            <li onClick={() => handleFilterChange(false)}>
+              {!isNewest && (
+                <i
+                  style={{ marginLeft: -25, marginRight: 9 }}
+                  className="arrow fa fa-check"
+                ></i>
+              )}
+              Найстаріші
+            </li>
+          </ul>
         </div>
-    );
-}
+      )}
+    </div>
+  );
+};
 
 export default FilterDropdown;
