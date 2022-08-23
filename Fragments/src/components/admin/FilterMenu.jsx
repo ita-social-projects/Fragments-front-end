@@ -39,10 +39,10 @@ const FilterMenu = ({ seed }) => {
   const handleSubmit = (e) => {
     setIsOpen(!isOpen);
     if (isModerator) {
-      seed.roleList.push("Модератор");
+      seed[0].roleList.push(isModerator);
     }
     if (isAdmin) {
-      seed.roleList.push("Адмін");
+      seed[0].roleList.push(isAdmin);
     }
     seed.representativeHEI = isHEI;
     seed.representativeAuthority = isAuthority;

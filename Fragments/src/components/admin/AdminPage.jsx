@@ -55,7 +55,7 @@ const AdminPage = () => {
       .get(`${variables.API_URL}Admin/getUsersBySearch`, options)
       .then((response) => setResult(response.data))
       .catch((error) => console.log(error));
-  }, [search]);
+  }, [search, seed]);
 
   const allDataGet = useCallback(async () => {
     await axios
@@ -103,15 +103,6 @@ const AdminPage = () => {
             width="180px"
           />
         </Grid>
-        {/* <Grid className="dataGrid" data={seed}>
-          <Column field="" width="52px" />
-          <Column field="Email" title="Е-мейл" width="144px" />
-          <Column field="Fullname" title="Прізвище та ім'я" width="190px" />
-          <Column field="Role" title="Роль" width="122px" />
-          <Column field="RegisterDate" title="Дата реєстрації" width="120px" />
-          <Column field="LastActivity" title="Дата останньої активності" width="208px" />
-          <Column field="Category" title="Категорія" width="180px" />
-        </Grid> */}
       </div>
     </div>
   );
